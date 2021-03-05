@@ -63,7 +63,6 @@ public class AuthenticationController extends BaseController {
      * @return cipher text as {@link String String}.
      */
     
-    // data coupling do truyền và sử dụng hết dữ liệu
     private String md5(String message) {
         String digest = null;
         try {

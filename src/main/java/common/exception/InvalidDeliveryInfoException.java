@@ -13,7 +13,7 @@ public class InvalidDeliveryInfoException extends AimsException {
 	public InvalidDeliveryInfoException() {
 
 	}
-
+	// data coupling do truyền sử dụng hết dữ liệu
 	public InvalidDeliveryInfoException(String message) {
 		super(message);
 	}

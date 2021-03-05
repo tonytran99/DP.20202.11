@@ -13,7 +13,7 @@ public class MediaUpdateException extends AimsException {
 	public MediaUpdateException() {
 
 	}
-
+	// data coupling do truyền sử dụng hết dữ liệu
 	public MediaUpdateException(String message) {
 		super(message);
 	}

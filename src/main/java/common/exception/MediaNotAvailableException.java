@@ -13,7 +13,7 @@ public class MediaNotAvailableException extends AimsException {
 	public MediaNotAvailableException() {
 
 	}
-
+	// data coupling do truyền sử dụng hết dữ liệu
 	public MediaNotAvailableException(String message) {
 		super(message);
 	}

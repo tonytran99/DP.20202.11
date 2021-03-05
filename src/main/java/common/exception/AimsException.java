@@ -11,7 +11,7 @@ public class AimsException extends RuntimeException {
     public AimsException() {
 
 	}
-
+    // data coupling do truyền sử dụng hết dữ liệu
 	public AimsException(String message) {
 		super(message);
 	}
