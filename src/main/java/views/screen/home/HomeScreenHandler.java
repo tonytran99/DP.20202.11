@@ -92,6 +92,8 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         return (HomeController) super.getBController();
     }
 
+
+    // Stamp coupling : Trueyn doi tuong dto nhung khong su dung
     protected void setupData(Object dto) throws Exception {
         setBController(new HomeController());
         this.authenticationController = new AuthenticationController();
@@ -134,6 +136,8 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         addMenuItem(2, "CD", splitMenuBtnSearch);
     }
 
+    
+    // Common Coupling : Tham chieu den SessionInformation.cartInstance static tu module khac
     @Override
     public void show() {
         if (authenticationController.isAnonymousSession()) {
@@ -213,6 +217,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         if (observable instanceof MediaHandler) update((MediaHandler) observable);
     }
 
+    //  Control coupling : mediaHandler lam tham so dieu kien
     private void update(MediaHandler mediaHandler) {
         int requestQuantity = mediaHandler.getRequestQuantity();
         Media media = mediaHandler.getMedia();

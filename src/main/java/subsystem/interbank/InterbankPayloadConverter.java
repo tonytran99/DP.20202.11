@@ -43,6 +43,7 @@ public class InterbankPayloadConverter {
         return ((MyMap) requestMap).toJSON();
     }
 
+    // control coupling :  trans.getErrorCode() dieu khien, xac dinh exception
     /**
      * Read the response from interbank server
      * @param responseText
