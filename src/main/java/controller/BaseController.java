@@ -17,7 +17,9 @@ public class BaseController {
      * @param media
      * @return CartMedia or null
      */
+    // data coupling do truyền và sử dụng hết dữ liệu
     public CartItem checkMediaInCart(Media media){
+    	// common coupling do sử dụng biến toàn cục SessionIformation
         return SessionInformation.cartInstance.checkMediaInCart(media);
     }
 
@@ -26,6 +28,7 @@ public class BaseController {
      * @return List[CartMedia]
      */
     public List getListCartMedia(){
+    	// common coupling do sử dụng biến toàn cục SessionIformation
         return SessionInformation.cartInstance.getListMedia();
     }
 }

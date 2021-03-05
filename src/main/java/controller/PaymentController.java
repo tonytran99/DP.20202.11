@@ -44,6 +44,7 @@ public class PaymentController extends BaseController {
 	 * @throws InvalidCardException - if the string does not represent a valid date
 	 *                              in the expected format
 	 */
+    // data coupling do truyền và sử dụng hết dữ liệu
 	private String getExpirationDate(String date) throws InvalidCardException {
 		String[] strs = date.split("/");
 		if (strs.length != 2) {
@@ -81,6 +82,7 @@ public class PaymentController extends BaseController {
 	 * @return {@link Map Map} represent the payment result with a
 	 *         message.
 	 */
+    // data coupling do truyền và sử dụng hết dữ liệu
 	public Map<String, String> payOrder(int amount, String contents, String cardNumber, String cardHolderName,
 			String expirationDate, String securityCode) {
 		Map<String, String> result = new Hashtable<String, String>();
@@ -104,6 +106,7 @@ public class PaymentController extends BaseController {
 	}
 
 	public void emptyCart(){
+		// content coupling do thay đổi dữ liệu của SessionInformaition
         SessionInformation.cartInstance.emptyCart();
     }
 }

@@ -15,12 +15,14 @@ import java.util.Date;
 public class BookDAO extends MediaDAO {
 
     @Override
+    // data coupling do truyền và sử dụng hết dữ liệu
     public Media getMediaById(int id) throws SQLException {
         String sql = "SELECT * FROM "+
                 "aims.Book " +
                 "INNER JOIN aims.Media " +
                 "ON Media.id = Book.id " +
                 "where Media.id = " + id + ";";
+        // common coupling do sử dụng biến toàn cục AIMSDB
         Statement stm = AIMSDB.getConnection().createStatement();
         ResultSet res = stm.executeQuery(sql);
         if(res.next()) {

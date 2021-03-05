@@ -14,12 +14,14 @@ import java.util.Date;
 public class DVDDAO extends MediaDAO {
 
     @Override
+    // data coupling do truyền và sử dụng hết dữ liệu
     public Media getMediaById(int id) throws SQLException {
         String sql = "SELECT * FROM "+
                 "aims.DVD " +
                 "INNER JOIN aims.Media " +
                 "ON Media.id = DVD.id " +
                 "where Media.id = " + id + ";";
+        // common coupling do sử dụng biến toàn cục AIMSDB
         ResultSet res = AIMSDB.getConnection().createStatement().executeQuery(sql);
         if(res.next()) {
 

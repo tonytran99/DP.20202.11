@@ -13,10 +13,11 @@ import java.util.Date;
  * @author
  */
 public class UserDAO {
-
+    // data coupling do truyền và sử dụng hết dữ liệu
     public User authenticate(String email, String encryptedPassword) throws SQLException {
         String sql = "SELECT * FROM User " +
                 "where email = '" + email + "' and encrypted_password = '" + encryptedPassword + "'";
+        // common coupling do sử dụng biến toàn cục AIMSDB
         ResultSet res =  AIMSDB.getConnection().createStatement().executeQuery(sql);
         if(res.next()) {
             return new User(
