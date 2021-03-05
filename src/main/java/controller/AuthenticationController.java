@@ -50,7 +50,7 @@ public class AuthenticationController extends BaseController {
     }
 
     public void logout() {
-    	// common coupling do truy cập trực tiếp và0 các dữ liệu của sessionInformation
+    	// common coupling do truy cập trực tiếp vào các dữ liệu của sessionInformation
         SessionInformation.mainUser = null;		// content coupling do thay đổi dữ liệu của SessionInformation
         SessionInformation.expiredTime = null;// content coupling do thay đổi dữ liệu của SessionInformation
     }
