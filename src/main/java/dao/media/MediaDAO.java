@@ -31,7 +31,7 @@ public class MediaDAO {
         }
         return medium;
     }
-
+    // data coupling do truyền và sử dụng hết dữ liệu
     public Media getMediaById(int id) throws SQLException {
         String sql = "SELECT * FROM Media ;";
         Statement stm = AIMSDB.getConnection().createStatement();
@@ -49,8 +49,8 @@ public class MediaDAO {
         }
         return null;
     }
-
-
+    // stamp coupling do truyền và không sử dụng hết dữ liệu (tbname)
+    // content coupling do đã thay đổi giá trị của đối tượng khác và để ở dạng public làm có thể thay đổi giá trị tại bất cứ đâu không kiểm soát được
     public void updateMediaFieldById(String tbname, int id, String field, Object value) throws SQLException {
         Statement stm = AIMSDB.getConnection().createStatement();
         if (value instanceof String){

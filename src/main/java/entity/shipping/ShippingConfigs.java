@@ -4,7 +4,7 @@ package entity.shipping;
  * @author
  */
 public class ShippingConfigs {
-
+	// commom và content coupling do để dữ liệu ở dạng public đẫn đến có thể lấy và thay đổi bất cứ lúc nào
     public static String[] PROVINCES = {
             "Bắc Giang", 	"Bắc Kạn", 			"Cao Bằng", 	"Hà Giang", 	"Lạng Sơn", 	"Phú Thọ",
             "Quảng Ninh", 	"Thái Nguyên", 		"Tuyên Quang", 	"Yên Bái", 		"Điện Biên", 	"Hòa Bình",

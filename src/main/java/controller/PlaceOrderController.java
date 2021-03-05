@@ -33,6 +33,7 @@ public class PlaceOrderController extends BaseController {
      * @throws SQLException
      */
     public void placeOrder() throws SQLException {
+    	// common coupling do sử dụng biến toàn cục SessionIformation
         SessionInformation.cartInstance.checkAvailabilityOfProduct();
     }
 
@@ -42,6 +43,7 @@ public class PlaceOrderController extends BaseController {
      * @throws SQLException
      */
     public Order createOrder() throws SQLException {
+    	// common coupling do sử dụng biến toàn cục SessionIformation
         return new Order(SessionInformation.cartInstance);
     }
 
@@ -50,6 +52,7 @@ public class PlaceOrderController extends BaseController {
      * @param order
      * @return Invoice
      */
+    // data coupling do truyền và sử dụng hết dữ liệu
     public Invoice createInvoice(Order order) {
         return new Invoice(order);
     }
@@ -60,6 +63,7 @@ public class PlaceOrderController extends BaseController {
      * @throws InterruptedException
      * @throws IOException
      */
+    // data coupling do truyền và sử dụng hết dữ liệu
     public DeliveryInfo processDeliveryInfo(HashMap info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
         LOGGER.info("Process Delivery Info");
         LOGGER.info(info.toString());
@@ -81,13 +85,14 @@ public class PlaceOrderController extends BaseController {
    * @throws InterruptedException
    * @throws IOException
    */
+    //stamp coupling do truyền cả đối tương info và không sử dụng hết
     public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
         if (validatePhoneNumber(info.get("phone"))
         || validateName(info.get("name"))
         || validateAddress(info.get("address"))) return;
         else throw new InvalidDeliveryInfoException();
     }
-    
+    // data coupling do truyền và sử dụng hết dữ liệu
     public boolean validatePhoneNumber(String phoneNumber) {
         if (phoneNumber.length() != 10) return false;
         if (!phoneNumber.startsWith("0")) return false;
@@ -98,7 +103,7 @@ public class PlaceOrderController extends BaseController {
         }
         return true;
     }
-    
+    // data coupling do truyền và sử dụng hết dữ liệu
     public boolean validateName(String name) {
         if (Objects.isNull(name)) return false;
         String patternString = "^[a-zA-Z\\s]*$";
@@ -106,7 +111,7 @@ public class PlaceOrderController extends BaseController {
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
     }
-    
+    // data coupling do truyền và sử dụng hết dữ liệu
     public boolean validateAddress(String address) {
         if (Objects.isNull(address)) return false;
         String patternString = "^[a-zA-Z\\s]*$";

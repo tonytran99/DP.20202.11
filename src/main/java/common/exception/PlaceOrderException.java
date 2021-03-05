@@ -13,7 +13,7 @@ public class PlaceOrderException extends AimsException {
 	public PlaceOrderException() {
 
 	}
-
+	// data coupling do truyền sử dụng hết dữ liệu
 	public PlaceOrderException(String message) {
 		super(message);
 	}

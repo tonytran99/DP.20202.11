@@ -28,11 +28,12 @@ public class AuthenticationController extends BaseController {
             return true;
         }
     }
-
     public User getMainUser() throws ExpiredSessionException {
+    	// common coupling do truy cập trực tiếp và0 các dữ liệu của sessionInformation
         if (SessionInformation.mainUser == null || SessionInformation.expiredTime == null || SessionInformation.expiredTime.isBefore(LocalDateTime.now())) {
             logout();
             throw new ExpiredSessionException();
+         // common coupling do truy cập trực tiếp và0 các dữ liệu của sessionInformation
         } else return SessionInformation.mainUser.cloneInformation();
     }
 
@@ -40,16 +41,18 @@ public class AuthenticationController extends BaseController {
         try {
             User user = new UserDAO().authenticate(email, md5(password));
             if (Objects.isNull(user)) throw new FailLoginException();
-            SessionInformation.mainUser = user;
-            SessionInformation.expiredTime = LocalDateTime.now().plusHours(24);
+            // common coupling do truy cập trực tiếp và0 các dữ liệu của sessionInformation
+            SessionInformation.mainUser = user;									// content coupling do thay đổi dữ liệu của SessionInformation
+            SessionInformation.expiredTime = LocalDateTime.now().plusHours(24); // content coupling do thay đổi dữ liệu của SessionInformation
         } catch (SQLException ex) {
             throw new FailLoginException();
         }
     }
 
     public void logout() {
-        SessionInformation.mainUser = null;
-        SessionInformation.expiredTime = null;
+    	// common coupling do truy cập trực tiếp và0 các dữ liệu của sessionInformation
+        SessionInformation.mainUser = null;		// content coupling do thay đổi dữ liệu của SessionInformation
+        SessionInformation.expiredTime = null;// content coupling do thay đổi dữ liệu của SessionInformation
     }
 
     /**
@@ -59,6 +62,7 @@ public class AuthenticationController extends BaseController {
      * @param message - plain text as {@link String String}.
      * @return cipher text as {@link String String}.
      */
+    
     private String md5(String message) {
         String digest = null;
         try {

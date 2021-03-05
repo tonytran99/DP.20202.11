@@ -13,7 +13,7 @@ public class ViewCartException extends AimsException {
 	public ViewCartException() {
 
 	}
-
+	// data coupling do truyền sử dụng hết dữ liệu
 	public ViewCartException(String message) {
 		super(message);
 	}

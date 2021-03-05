@@ -15,10 +15,11 @@ public class Cart {
         lstCartItem = new ArrayList<>();
     }
 
+    // data coupling do truyền và sử dụng hết dữ liệu
     public void addCartMedia(CartItem cm){
         lstCartItem.add(cm);
     }
-
+    // data coupling do truyền và sử dụng hết dữ liệu
     public void removeCartMedia(CartItem cm){
         lstCartItem.remove(cm);
     }
@@ -30,7 +31,7 @@ public class Cart {
     public void emptyCart(){
         lstCartItem.clear();
     }
-
+  
     public int getTotalMedia(){
         int total = 0;
         for (Object obj : lstCartItem) {
@@ -59,7 +60,7 @@ public class Cart {
         }
         if (!allAvailable) throw new MediaNotAvailableException("Some media not available");
     }
-
+    // stamp coupling do chỉ dùng getId của media
     public CartItem checkMediaInCart(Media media){
         for (CartItem cartItem : lstCartItem) {
             if (cartItem.getMedia().getId() == media.getId()) return cartItem;

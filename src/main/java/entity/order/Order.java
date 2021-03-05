@@ -16,14 +16,15 @@ public class Order {
     private int subtotal; // t?ng gi� ti?n c?a c�c s?n ph?m
     private int tax;// thu? gi� tr? gia t?ng 10%
     private List orderMediaList;
+    // Nên để ở private
     protected DeliveryInfo deliveryInfo;
-
     public Order() {
         this.shippingFees = 0;
         this.subtotal = 0;
         this.tax = 0;
     }
-
+    
+    //stamp coupling do truyền cart ở dạng phức và không dùng hết
     public Order(Cart cart) {
         List<OrderItem> orderItems = new ArrayList<>();
         for (Object object : SessionInformation.cartInstance.getListMedia()) {
@@ -50,7 +51,7 @@ public class Order {
     public DeliveryInfo getDeliveryInfo() {
         return deliveryInfo;
     }
-
+    // data coupling do truyền và sử dụng hết dữ liệu
     public void setDeliveryInfo(DeliveryInfo deliveryInfo) {
         this.deliveryInfo = deliveryInfo;
         this.shippingFees = deliveryInfo.calculateShippingFee(this);
