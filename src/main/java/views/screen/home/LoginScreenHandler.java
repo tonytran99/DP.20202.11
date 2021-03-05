@@ -62,6 +62,7 @@ public class LoginScreenHandler extends BaseScreenHandler{
         return (AuthenticationController) super.getBController();
     }
 
+    // Stamp coupling : Trueyn doi tuong dto nhung khong su dung
     protected void setupData(Object dto) throws Exception {
     }
 

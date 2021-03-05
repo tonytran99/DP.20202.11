@@ -38,7 +38,7 @@ public class IntroScreenHandler extends BaseScreenHandler {
         }
     }
 
-
+    // stamp coupling:Trueyn doi tuong dto nhung khong su dung
     protected void setupData(Object dto) throws Exception {
         return;
     }

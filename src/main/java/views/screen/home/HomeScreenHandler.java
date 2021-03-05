@@ -93,7 +93,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     }
 
 
-    // Stamp coupling : Trueyn doi tuong dto nhung khong su dung -> 
+    // Stamp coupling : Trueyn doi tuong dto nhung khong su dung
     protected void setupData(Object dto) throws Exception {
         setBController(new HomeController());
         this.authenticationController = new AuthenticationController();
