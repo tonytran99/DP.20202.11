@@ -9,7 +9,7 @@ import entity.media.Media;
 
 public class Cart {
     
-    private List<CartItem> lstCartItem;// c�c cart trong gi? h�ng
+    private List<CartItem> lstCartItem;// c�c cart trong gi? h�ng
 
     public Cart() {
         lstCartItem = new ArrayList<>();
@@ -60,7 +60,7 @@ public class Cart {
         }
         if (!allAvailable) throw new MediaNotAvailableException("Some media not available");
     }
-    // stamp coupling do chỉ dùng getId của media
+    // stamp coupling do chỉ dùng phương thức getId của Media 
     public CartItem checkMediaInCart(Media media){
         for (CartItem cartItem : lstCartItem) {
             if (cartItem.getMedia().getId() == media.getId()) return cartItem;
