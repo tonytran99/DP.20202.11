@@ -13,7 +13,7 @@ public class PlaceRushOrderException extends AimsException {
 	public PlaceRushOrderException() {
 
 	}
-
+	// data coupling do truyền sử dụng hết dữ liệu
 	public PlaceRushOrderException(String message) {
 		super(message);
 	}
