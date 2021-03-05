@@ -13,8 +13,8 @@ import java.util.List;
 public class Order {
 
     private int shippingFees;
-    private int subtotal;
-    private int tax;
+    private int subtotal; // t?ng giá ti?n c?a các s?n ph?m
+    private int tax;// thu? giá tr? gia t?ng 10%
     private List orderMediaList;
     protected DeliveryInfo deliveryInfo;
 

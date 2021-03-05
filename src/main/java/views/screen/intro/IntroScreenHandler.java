@@ -17,12 +17,13 @@ import views.screen.popup.PopupScreen;
 
 public class IntroScreenHandler extends BaseScreenHandler {
 
-    private static final Logger LOGGER = Utils.getLogger(IntroScreenHandler.class.getName());
+    private static final Logger LOGGER = Utils.getLogger(IntroScreenHandler.class.getName()); //content coupling do thay ??i du lieu cua LOGGER
 
 
     @FXML
     ImageView logo;
-
+    //content coupling do thay doi du lieu cua LOGGER
+    // common coupling do phuong thuc là public có the thay  bat cu khi nào goi toi
     public IntroScreenHandler(Stage stage, String screenPath) throws IOException {
         super(stage, screenPath);
 
@@ -30,7 +31,7 @@ public class IntroScreenHandler extends BaseScreenHandler {
             setupData(null);
             setupFunctionality();
         } catch (IOException ex) {
-            LOGGER.info(ex.getMessage());
+            LOGGER.info(ex.getMessage()); 
             PopupScreen.error("Error when loading resources.");
         } catch (Exception ex) {
             LOGGER.info(ex.getMessage());
@@ -42,7 +43,8 @@ public class IntroScreenHandler extends BaseScreenHandler {
     protected void setupData(Object dto) throws Exception {
         return;
     }
-
+    //content coupling do thay doi du lieu cua LOGGER
+    // common coupling do phuong thuc là public có the thay  bat cu khi nào goi toi
     protected void setupFunctionality() throws Exception {
         File file = new File("src/main/resources/assets/images/Logo.png");
         Image image = new Image(file.toURI().toString());

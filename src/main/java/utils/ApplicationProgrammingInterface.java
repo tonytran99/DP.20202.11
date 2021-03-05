@@ -39,7 +39,7 @@ public class ApplicationProgrammingInterface {
 		return respone.substring(0, respone.length() - 1).toString();
 	}
 
-	public static String post(String url, String data) throws IOException {
+	public static String post(String url, String data) throws IOException { 
 		allowMethods("PATCH");
 		HttpURLConnection conn = setupConnection(url);
 		conn.setRequestMethod("PATCH");

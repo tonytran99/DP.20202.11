@@ -1,4 +1,4 @@
-package views.screen.home;
+    package views.screen.home;
 
 import java.io.File;
 import java.io.IOException;
@@ -178,7 +178,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             return;
         }
     }
-
+    //data coupling khi su dung het du lieu duoc truyen
     private void addMenuItem(int position, String text, MenuButton menuButton){
         MenuItem menuItem = new MenuItem();
         Label label = new Label();

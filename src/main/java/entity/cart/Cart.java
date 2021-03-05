@@ -9,7 +9,7 @@ import entity.media.Media;
 
 public class Cart {
     
-    private List<CartItem> lstCartItem;
+    private List<CartItem> lstCartItem;// các cart trong gi? hàng
 
     public Cart() {
         lstCartItem = new ArrayList<>();

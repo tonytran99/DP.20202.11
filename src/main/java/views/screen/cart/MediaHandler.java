@@ -59,7 +59,6 @@ public class MediaHandler extends FXMLScreenHandler {
 	private CartItem cartItem;
 	private Spinner<Integer> spinner;
 	private CartScreenHandler cartScreen;
-
 	public MediaHandler(String screenPath, CartScreenHandler cartScreen) throws IOException {
 		super(screenPath);
 		this.cartScreen = cartScreen;
@@ -72,17 +71,17 @@ public class MediaHandler extends FXMLScreenHandler {
 	}
 
 	private void setMediaInfo() {
-		title.setText(cartItem.getMedia().getTitle());
-		price.setText(ViewsConfig.getCurrencyFormat(cartItem.getPrice()));
+		title.setText(cartItem.getMedia().getTitle()); // content coupling do doi du lieu cuaa title
+		price.setText(ViewsConfig.getCurrencyFormat(cartItem.getPrice())); // content coupling do doi du lieu cua price
 		File file = new File(cartItem.getMedia().getImageURL());
 		Image im = new Image(file.toURI().toString());
-		image.setImage(im);
+		image.setImage(im); // content coupling do thay ??i d? li?u c?a image
 		image.setPreserveRatio(false);
 		image.setFitHeight(110);
 		image.setFitWidth(92);
 
 		// add delete button
-		btnDelete.setFont(ViewsConfig.REGULAR_FONT);
+		btnDelete.setFont(ViewsConfig.REGULAR_FONT); // content coupling do thay doi du lieu cua btnDelete
 		btnDelete.setOnMouseClicked(e -> {
 			try {
 				SessionInformation.cartInstance.removeCartMedia(cartItem); // update user cart
@@ -96,11 +95,12 @@ public class MediaHandler extends FXMLScreenHandler {
 
 		initializeSpinner();
 	}
-
+        // content coupling do thay doi du lieu cua btnDelete,LOGGER,cartItem,labelOutOfStock,spinner,price
+        //common coupling do phuong thuc này là public nên có the thay the bat cu lúc nào duoc goi
 	private void initializeSpinner(){
 		SpinnerValueFactory<Integer> valueFactory = //
 			new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, cartItem.getQuantity());
-		spinner = new Spinner<Integer>(valueFactory);
+		spinner = new Spinner<Integer>(valueFactory); 
 		spinner.setOnMouseClicked( e -> {
 			try {
 				int numOfProd = this.spinner.getValue();

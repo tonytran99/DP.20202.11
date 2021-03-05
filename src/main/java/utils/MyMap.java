@@ -62,10 +62,11 @@ public class MyMap extends LinkedHashMap<String, Object> {
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
 	 */
+        // data couping khi su dung het du lieu duoc truyen
 	public static Map<String, Object> toMyMap(Object obj) throws IllegalArgumentException, IllegalAccessException {
 		Map<String, Object> map = new MyMap();
 		List<Field> fields = new ArrayList<>();
-		fields.addAll(Arrays.asList(obj.getClass().getDeclaredFields()));
+		fields.addAll(Arrays.asList(obj.getClass().getDeclaredFields()));// content coupling khi su dung method getclass c?a obj
 		fields.addAll(Arrays.asList(obj.getClass().getSuperclass().getDeclaredFields()));
 
 		for (Field field : fields) {
@@ -73,7 +74,7 @@ public class MyMap extends LinkedHashMap<String, Object> {
 			Object value = field.get(obj);
 			try {
 				if (!value.getClass().getPackage().getName().startsWith("java")) {
-					value = MyMap.toMyMap(value).toString();
+					value = MyMap.toMyMap(value).toString(); 
 				}
 			} catch (Exception ex) {
 				;
@@ -97,6 +98,7 @@ public class MyMap extends LinkedHashMap<String, Object> {
 	 * @return the term as {@link String String}
 	 * @throws IllegalArgumentException
 	 */
+        // data coupling khi su dung het du lieu duoc truyen
 	private static String getNextTerm(String str, int idx) {
 		if (str == null || idx >= str.length() || str.charAt(idx) != '"') {
 			throw new IllegalArgumentException("Cannot resolve the input.");
@@ -130,6 +132,7 @@ public class MyMap extends LinkedHashMap<String, Object> {
 	 * @return the term as {@link MyMap MyMap}
 	 * @throws IllegalArgumentException
 	 */
+        // data coupling khi su dung het du lieu duoc truyen
 	public static MyMap toMyMap(String str, int idx) throws IllegalArgumentException {
 		if (str == null || str.length() < 2 || str.charAt(idx) != '{') {
 			throw new IllegalArgumentException("Cannot resolve the input.");

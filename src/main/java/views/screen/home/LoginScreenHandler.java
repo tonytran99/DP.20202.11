@@ -71,7 +71,7 @@ public class LoginScreenHandler extends BaseScreenHandler{
     @FXML
     void login(MouseEvent event) throws IOException, InterruptedException, SQLException {
         try {
-            getBController().login(email.getText(), password.getText());
+            getBController().login(email.getText(), password.getText()); // content coupling khi su dung code cua object email
             PopupScreen.success("Login Successfully!");
             backToHomeScreen(event);
         } catch (Exception ex) {
