@@ -21,7 +21,12 @@ import java.util.regex.Pattern;
  * This class controls the flow of place order usecase in our AIMS project
  * @author nguyenlm
  */
+<<<<<<< HEAD
 // Temporal cohension
+=======
+
+// logical cohesion do cùng thực hiện phương thức validatePhone, validateName,...
+>>>>>>> 649e35ebf5bdd2063aaf8b68dae173f107f7f964
 public class PlaceOrderController extends BaseController {
 
     /**

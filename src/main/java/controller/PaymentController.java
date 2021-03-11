@@ -21,6 +21,8 @@ import subsystem.InterbankSubsystem;
  * @author hieud
  *
  */
+
+// coincidental cohesion do các phương thức không liên quan đến nhau
 public class PaymentController extends BaseController {
 
 	/**
