@@ -24,6 +24,7 @@ public class IntroScreenHandler extends BaseScreenHandler {
     ImageView logo;
     //content coupling do thay doi du lieu cua LOGGER
     // common coupling do phuong thuc là public có the thay  bat cu khi nào goi toi
+    // Temporal cohesion
     public IntroScreenHandler(Stage stage, String screenPath) throws IOException {
         super(stage, screenPath);
 
