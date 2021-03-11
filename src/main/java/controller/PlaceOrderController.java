@@ -21,6 +21,7 @@ import java.util.regex.Pattern;
  * This class controls the flow of place order usecase in our AIMS project
  * @author nguyenlm
  */
+// Temporal cohension
 public class PlaceOrderController extends BaseController {
 
     /**
@@ -33,7 +34,7 @@ public class PlaceOrderController extends BaseController {
      * @throws SQLException
      */
     public void placeOrder() throws SQLException {
-    	// common coupling do sử dụng biến toàn cục SessionIformation
+    	// common coupling do sá»­ dá»¥ng biáº¿n toÃ n cá»¥c SessionIformation
         SessionInformation.cartInstance.checkAvailabilityOfProduct();
     }
 
@@ -43,7 +44,7 @@ public class PlaceOrderController extends BaseController {
      * @throws SQLException
      */
     public Order createOrder() throws SQLException {
-    	// common coupling do sử dụng biến toàn cục SessionIformation
+    	// common coupling do sá»­ dá»¥ng biáº¿n toÃ n cá»¥c SessionIformation
         return new Order(SessionInformation.cartInstance);
     }
 
@@ -52,7 +53,7 @@ public class PlaceOrderController extends BaseController {
      * @param order
      * @return Invoice
      */
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
     public Invoice createInvoice(Order order) {
         return new Invoice(order);
     }
@@ -63,7 +64,7 @@ public class PlaceOrderController extends BaseController {
      * @throws InterruptedException
      * @throws IOException
      */
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
     public DeliveryInfo processDeliveryInfo(HashMap info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
         LOGGER.info("Process Delivery Info");
         LOGGER.info(info.toString());
@@ -85,14 +86,14 @@ public class PlaceOrderController extends BaseController {
    * @throws InterruptedException
    * @throws IOException
    */
-    //stamp coupling do truyền cả đối tương info và không sử dụng hết
+    //stamp coupling do truyá»�n cáº£ Ä‘á»‘i tÆ°Æ¡ng info vÃ  khÃ´ng sá»­ dá»¥ng háº¿t
     public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
         if (validatePhoneNumber(info.get("phone"))
         || validateName(info.get("name"))
         || validateAddress(info.get("address"))) return;
         else throw new InvalidDeliveryInfoException();
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
     public boolean validatePhoneNumber(String phoneNumber) {
         if (phoneNumber.length() != 10) return false;
         if (!phoneNumber.startsWith("0")) return false;
@@ -103,7 +104,7 @@ public class PlaceOrderController extends BaseController {
         }
         return true;
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
     public boolean validateName(String name) {
         if (Objects.isNull(name)) return false;
         String patternString = "^[a-zA-Z\\s]*$";
@@ -111,7 +112,7 @@ public class PlaceOrderController extends BaseController {
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
     public boolean validateAddress(String address) {
         if (Objects.isNull(address)) return false;
         String patternString = "^[a-zA-Z\\s]*$";
