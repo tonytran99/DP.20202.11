@@ -23,6 +23,7 @@ import java.util.regex.Pattern;
  */
 
 // logical cohesion do cùng thực hiện phương thức validatePhone, validateName,...
+// logical cohesion, cac phuong thuc validate nhu validateDeliveryInfo , validatePhoneNumber, validateName, validateAddress can duoc tach rieng vao mot lop
 public class PlaceOrderController extends BaseController {
 
     /**
