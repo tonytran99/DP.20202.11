@@ -13,7 +13,7 @@ import java.util.List;
 public class Order {
 
     private int shippingFees;
-    private int subtotal; // tổng giá tiền của sản phẩm
+    private int subtotal; // tổng giá ti�?n của sản phẩm
     private int tax;// 
     private List orderMediaList;
     //  Nên để ở private
@@ -24,7 +24,8 @@ public class Order {
         this.tax = 0;
     }
     
-    // stamp coupling do truyền cart ở dạng phức và không dùng hết
+    // stamp coupling do truy�?n cart ở dạng phức và không dùng hết
+    
     public Order(Cart cart) {
         List<OrderItem> orderItems = new ArrayList<>();
         for (Object object : SessionInformation.cartInstance.getListMedia()) {
@@ -52,7 +53,7 @@ public class Order {
         return deliveryInfo;
     }
     
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // data coupling do truy�?n và sử dụng hết dữ liệu
     public void setDeliveryInfo(DeliveryInfo deliveryInfo) {
         this.deliveryInfo = deliveryInfo;
         this.shippingFees = deliveryInfo.calculateShippingFee(this);

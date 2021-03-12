@@ -10,16 +10,16 @@ import entity.media.Media;
 public class Cart {
     
     private List<CartItem> lstCartItem;// c�c cart trong gi? h�ng
-
+ 
     public Cart() {
         lstCartItem = new ArrayList<>();
     }
 
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // data coupling do truy�?n và sử dụng hết dữ liệu
     public void addCartMedia(CartItem cm){
         lstCartItem.add(cm);
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // data coupling do truy�?n và sử dụng hết dữ liệu
     public void removeCartMedia(CartItem cm){
         lstCartItem.remove(cm);
     }
