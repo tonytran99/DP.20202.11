@@ -12,6 +12,7 @@ import java.util.*;
  * @author hieud
  *
  */
+// Functional cohesion khi tat ca cac method deu dong gop nhat quan vao nhiem vu 
 public class MyMap extends LinkedHashMap<String, Object> {
 	private static final long serialVersionUID = 1L;
 
@@ -22,6 +23,7 @@ public class MyMap extends LinkedHashMap<String, Object> {
 	 *         https://hg.openjdk.java.net/jdk8/jdk8/jdk/file/tip/src/share/classes/java/util/Hashtable.java
 	 * @return a {@link String String}.
 	 */
+        
 	public String toJSON() {
 		int max = size() - 1;
 		if (max == -1)
