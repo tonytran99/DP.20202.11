@@ -19,7 +19,7 @@ import java.util.Objects;
  * @author
  */
 
-// temporal cohesion do các phương thức cùng được sử dụng khi login
+// Temporal cohesion do cac phuong thuc thuc hien theo thu tu khi login
 public class AuthenticationController extends BaseController {
 
     public boolean isAnonymousSession() {

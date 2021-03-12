@@ -7,19 +7,22 @@ import java.util.List;
 import common.exception.MediaNotAvailableException;
 import entity.media.Media;
 
+//Communicational Cohesion vi cac phuong thuc cung thuc hien tren lstCartItem
 public class Cart {
     
-    private List<CartItem> lstCartItem;// c�c cart trong gi? h�ng
- 
+    private List<CartItem> lstCartItem;// cÃ¯Â¿Â½c cart trong gi? hÃ¯Â¿Â½ng
+
+
     public Cart() {
         lstCartItem = new ArrayList<>();
     }
 
-    // data coupling do truy�?n và sử dụng hết dữ liệu
+
+    // data coupling do truyá»?n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
     public void addCartMedia(CartItem cm){
         lstCartItem.add(cm);
     }
-    // data coupling do truy�?n và sử dụng hết dữ liệu
+    // data coupling do truyá»?n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
     public void removeCartMedia(CartItem cm){
         lstCartItem.remove(cm);
     }
@@ -60,7 +63,7 @@ public class Cart {
         }
         if (!allAvailable) throw new MediaNotAvailableException("Some media not available");
     }
-    // stamp coupling do chỉ dùng phương thức getId của Media 
+    // stamp coupling do chÃ¡Â»â€° dÃƒÂ¹ng phÃ†Â°Ã†Â¡ng thÃ¡Â»Â©c getId cÃ¡Â»Â§a Media 
     public CartItem checkMediaInCart(Media media){
         for (CartItem cartItem : lstCartItem) {
             if (cartItem.getMedia().getId() == media.getId()) return cartItem;
