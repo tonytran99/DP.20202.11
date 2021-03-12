@@ -10,17 +10,19 @@ import entity.media.Media;
 //Communicational Cohesion vi cac phuong thuc cung thuc hien tren lstCartItem
 public class Cart {
     
-    private List<CartItem> lstCartItem;// cï¿½c cart trong gi? hï¿½ng
+    private List<CartItem> lstCartItem;// cÃ¯Â¿Â½c cart trong gi? hÃ¯Â¿Â½ng
+
 
     public Cart() {
         lstCartItem = new ArrayList<>();
     }
 
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+
+    // data coupling do truyá»?n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
     public void addCartMedia(CartItem cm){
         lstCartItem.add(cm);
     }
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    // data coupling do truyá»?n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
     public void removeCartMedia(CartItem cm){
         lstCartItem.remove(cm);
     }
@@ -61,7 +63,7 @@ public class Cart {
         }
         if (!allAvailable) throw new MediaNotAvailableException("Some media not available");
     }
-    // stamp coupling do chá»‰ dÃ¹ng phÆ°Æ¡ng thá»©c getId cá»§a Media 
+    // stamp coupling do chÃ¡Â»â€° dÃƒÂ¹ng phÃ†Â°Ã†Â¡ng thÃ¡Â»Â©c getId cÃ¡Â»Â§a Media 
     public CartItem checkMediaInCart(Media media){
         for (CartItem cartItem : lstCartItem) {
             if (cartItem.getMedia().getId() == media.getId()) return cartItem;

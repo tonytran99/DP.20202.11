@@ -1,4 +1,4 @@
-package views.screen.cart;
+    package views.screen.cart;
 
 import java.io.File;
 import java.io.IOException;
@@ -69,13 +69,13 @@ public class MediaHandler extends FXMLScreenHandler {
 		this.cartItem = cartItem;
 		setMediaInfo();
 	}
-
+        // Communicational cohesion khi cac thanh phan cua method nay dung chung du lieu cartItem
 	private void setMediaInfo() {
 		title.setText(cartItem.getMedia().getTitle()); // content coupling do doi du lieu cuaa title
 		price.setText(ViewsConfig.getCurrencyFormat(cartItem.getPrice())); // content coupling do doi du lieu cua price
 		File file = new File(cartItem.getMedia().getImageURL());
 		Image im = new Image(file.toURI().toString());
-		image.setImage(im); // content coupling do thay ??i d? li?u c?a image
+		image.setImage(im); 
 		image.setPreserveRatio(false);
 		image.setFitHeight(110);
 		image.setFitWidth(92);
