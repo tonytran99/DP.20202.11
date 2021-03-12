@@ -10,6 +10,7 @@ import entity.media.Media;
  * This class is the base controller for our AIMS project
  * @author nguyenlm
  */
+
 public class BaseController {
     
     /**
@@ -17,9 +18,9 @@ public class BaseController {
      * @param media
      * @return CartMedia or null
      */
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
     public CartItem checkMediaInCart(Media media){
-    	// common coupling do sử dụng biến toàn cục SessionIformation
+    	// common coupling do sá»­ dá»¥ng biáº¿n toÃ n cá»¥c SessionIformation
         return SessionInformation.cartInstance.checkMediaInCart(media);
     }
 
@@ -28,7 +29,7 @@ public class BaseController {
      * @return List[CartMedia]
      */
     public List getListCartMedia(){
-    	// common coupling do sử dụng biến toàn cục SessionIformation
+    	// common coupling do sá»­ dá»¥ng biáº¿n toÃ n cá»¥c SessionIformation
         return SessionInformation.cartInstance.getListMedia();
     }
 }
