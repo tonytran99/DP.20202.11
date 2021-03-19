@@ -21,6 +21,9 @@ import java.util.regex.Pattern;
 
  * @author nguyenlm
  */
+//SOLID: vi phạm nguyên lý SRP do class chứa nhiều hàm validate
+//SOLID: vi phạm nguyên lý OCP do phương thức validateDeliveryInfo thay đổi khi info người dùng thay đổi
+//SOLID: vi phạm nguyên lý OCP do phương thức processDeliveryInfo thay đổi khi thông tin giao hàng có thêm hoặc giảm bớt đi các thuộc tính
 // Logical cohension do co nhieu ham tuong tu nhau 
 
 public class PlaceOrderController extends BaseController {

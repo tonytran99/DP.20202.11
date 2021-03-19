@@ -1,5 +1,5 @@
 package entity.payment;
-
+//SOLID: vi phạm nguyên lý OCP vì khi có thêm phương thức thanh toán mới sẽ phải sửa lại mã nguồn của class
 public class PaymentTransaction {
 	private String errorCode;
 	private CreditCard card;

@@ -12,6 +12,8 @@ import java.util.List;
 /**
  * @author
  */
+//SOLID: vi phạm nguyên lý DIP do 3 class DVD CD BOOK đã overide lại phương thức public getMediaByID của class MediaDAO
+//SOLID: vi phạm nguyên lý SRP do class có nhiệm vụ là lấy Media theo ID và lấy Media File theo ID
 //Fuctional cohension do cac phuong thuc lien quan ho tro thao tac DAO
 public class MediaDAO {
 
