@@ -21,7 +21,8 @@ import subsystem.InterbankSubsystem;
  * @author hieud
  *
  */
-
+//SOLID: Vi phạm nguyên lý SRP do class chứa hàm dùng để thanh toán vừa chứa hàm để lấy ngày
+//SOLID: Vi phạm nguyên lý OCP do phương thức payOrder sẽ phải thay đổi khi có thêm các kiểu thanh toán mới
 // Functional cohension do cac phuong thuc lien quan control gio hang
 public class PaymentController extends BaseController {
 

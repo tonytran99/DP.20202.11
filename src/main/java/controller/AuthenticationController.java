@@ -18,7 +18,7 @@ import java.util.Objects;
 /**
  * @author
  */
-
+//SOLID: Vi phạm nguyên lý SRP vì vừa login logout lại vừa có hàm dùng để mã hóa ở đây, dẫn đến class có nhiều lý do để thay đổi
 // Temporal cohesion do cac phuong thuc thuc hien theo thu tu khi login
 public class AuthenticationController extends BaseController {
 
