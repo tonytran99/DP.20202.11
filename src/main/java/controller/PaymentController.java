@@ -110,6 +110,6 @@ public class PaymentController extends BaseController {
 
 	public void emptyCart(){
 		// content coupling do thay Ä‘á»•i dá»¯ liá»‡u cá»§a SessionInformaition
-        SessionInformation.cartInstance.emptyCart();
+		SessionInformation.cart.emptyCart();
     }
 }

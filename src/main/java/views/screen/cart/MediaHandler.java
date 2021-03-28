@@ -84,7 +84,7 @@ public class MediaHandler extends FXMLScreenHandler {
 		btnDelete.setFont(ViewsConfig.REGULAR_FONT); // content coupling do thay doi du lieu cua btnDelete
 		btnDelete.setOnMouseClicked(e -> {
 			try {
-				SessionInformation.cartInstance.removeCartMedia(cartItem); // update user cart
+				SessionInformation.cart.removeCartMedia(cartItem); // update user cart
 				cartScreen.updateCart(); // re-display user cart
 				LOGGER.info("Deleted " + cartItem.getMedia().getTitle() + " from the cart");
 			} catch (SQLException exp) {
@@ -96,7 +96,7 @@ public class MediaHandler extends FXMLScreenHandler {
 		initializeSpinner();
 	}
         // content coupling do thay doi du lieu cua btnDelete,LOGGER,cartItem,labelOutOfStock,spinner,price
-        //common coupling do phuong thuc này là public nên có the thay the bat cu lúc nào duoc goi
+        //common coupling do phuong thuc nï¿½y lï¿½ public nï¿½n cï¿½ the thay the bat cu lï¿½c nï¿½o duoc goi
 	private void initializeSpinner(){
 		SpinnerValueFactory<Integer> valueFactory = //
 			new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, cartItem.getQuantity());

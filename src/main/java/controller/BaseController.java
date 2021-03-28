@@ -21,7 +21,7 @@ public class BaseController {
     // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
     public CartItem checkMediaInCart(Media media){
     	// common coupling do sá»­ dá»¥ng biáº¿n toÃ n cá»¥c SessionIformation
-        return SessionInformation.cartInstance.checkMediaInCart(media);
+    	 return SessionInformation.cart.checkMediaInCart(media);
     }
 
     /**
@@ -30,6 +30,6 @@ public class BaseController {
      */
     public List getListCartMedia(){
     	// common coupling do sá»­ dá»¥ng biáº¿n toÃ n cá»¥c SessionIformation
-        return SessionInformation.cartInstance.getListMedia();
+    	return SessionInformation.cart.getListMedia();
     }
 }
