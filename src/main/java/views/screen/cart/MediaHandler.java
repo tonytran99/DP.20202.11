@@ -27,6 +27,7 @@ import views.screen.ViewsConfig;
 
 public class MediaHandler extends FXMLScreenHandler {
 
+	// singleton design pattern
 	private static Logger LOGGER = Utils.getLogger(MediaHandler.class.getName());
 
 	@FXML
@@ -96,7 +97,7 @@ public class MediaHandler extends FXMLScreenHandler {
 		initializeSpinner();
 	}
         // content coupling do thay doi du lieu cua btnDelete,LOGGER,cartItem,labelOutOfStock,spinner,price
-        //common coupling do phuong thuc này là public nên có the thay the bat cu lúc nào duoc goi
+        //common coupling do phuong thuc nï¿½y lï¿½ public nï¿½n cï¿½ the thay the bat cu lï¿½c nï¿½o duoc goi
 	private void initializeSpinner(){
 		SpinnerValueFactory<Integer> valueFactory = //
 			new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, cartItem.getQuantity());
