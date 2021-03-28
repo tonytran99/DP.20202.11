@@ -39,7 +39,7 @@ public class PlaceOrderController extends BaseController {
      */
     public void placeOrder() throws SQLException {
     	// common coupling do sÃ¡Â»Â­ dÃ¡Â»Â¥ng biÃ¡ÂºÂ¿n toÃƒÂ n cÃ¡Â»Â¥c SessionIformation
-        SessionInformation.cartInstance.checkAvailabilityOfProduct();
+    	SessionInformation.cart.checkAvailabilityOfProduct();
     }
 
     /**
@@ -49,7 +49,7 @@ public class PlaceOrderController extends BaseController {
      */
     public Order createOrder() throws SQLException {
     	// common coupling do sÃ¡Â»Â­ dÃ¡Â»Â¥ng biÃ¡ÂºÂ¿n toÃƒÂ n cÃ¡Â»Â¥c SessionIformation
-        return new Order(SessionInformation.cartInstance);
+    	return new Order(SessionInformation.cart);
     }
 
     /**

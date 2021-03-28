@@ -9,11 +9,15 @@ import entity.media.Media;
 
 //Communicational Cohesion vi cac phuong thuc cung thuc hien tren lstCartItem
 public class Cart {
-    
+	private static Cart cart;
     private List<CartItem> lstCartItem;// cÃ¯Â¿Â½c cart trong gi? hÃ¯Â¿Â½ng
 
-
-    public Cart() {
+    public static Cart getInstance() {
+    	if(cart == null) cart = new Cart();
+    	return cart;
+    }
+    
+    private Cart() {
         lstCartItem = new ArrayList<>();
     }
 
