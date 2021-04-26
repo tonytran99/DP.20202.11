@@ -12,6 +12,9 @@ import java.util.List;
 /**
  * @author
  */
+//SOLID: vi phạm nguyên lý DIP do 3 class DVD CD BOOK đã overide lại phương thức public getMediaByID của class MediaDAO
+//SOLID: vi phạm nguyên lý SRP do class có nhiệm vụ là lấy Media theo ID và lấy Media File theo ID
+//Fuctional cohension do cac phuong thuc lien quan ho tro thao tac DAO
 public class MediaDAO {
 
     public List getAllMedia() throws SQLException {
@@ -31,7 +34,7 @@ public class MediaDAO {
         }
         return medium;
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
     public Media getMediaById(int id) throws SQLException {
         String sql = "SELECT * FROM Media ;";
         Statement stm = AIMSDB.getConnection().createStatement();
@@ -49,8 +52,8 @@ public class MediaDAO {
         }
         return null;
     }
-    // stamp coupling do truyền và không sử dụng hết dữ liệu (tbname)
-    // content coupling do đã thay đổi giá trị của đối tượng khác và để ở dạng public làm có thể thay đổi giá trị tại bất cứ đâu không kiểm soát được
+    // stamp coupling do truyá»�n vÃ  khÃ´ng sá»­ dá»¥ng háº¿t dá»¯ liá»‡u (tbname)
+    // content coupling do Ä‘Ã£ thay Ä‘á»•i giÃ¡ trá»‹ cá»§a Ä‘á»‘i tÆ°á»£ng khÃ¡c vÃ  Ä‘á»ƒ á»Ÿ dáº¡ng public lÃ m cÃ³ thá»ƒ thay Ä‘á»•i giÃ¡ trá»‹ táº¡i báº¥t cá»© Ä‘Ã¢u khÃ´ng kiá»ƒm soÃ¡t Ä‘Æ°á»£c
     public void updateMediaFieldById(String tbname, int id, String field, Object value) throws SQLException {
         Statement stm = AIMSDB.getConnection().createStatement();
         if (value instanceof String){

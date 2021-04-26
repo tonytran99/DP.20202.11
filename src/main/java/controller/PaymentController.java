@@ -21,8 +21,9 @@ import subsystem.InterbankSubsystem;
  * @author hieud
  *
  */
-
-// coincidental cohesion do các phương thức không liên quan đến nhau
+//SOLID: Vi phạm nguyên lý SRP do class chứa hàm dùng để thanh toán vừa chứa hàm để lấy ngày
+//SOLID: Vi phạm nguyên lý OCP do phương thức payOrder sẽ phải thay đổi khi có thêm các kiểu thanh toán mới
+// Functional cohension do cac phuong thuc lien quan control gio hang
 public class PaymentController extends BaseController {
 
 	/**
@@ -46,7 +47,7 @@ public class PaymentController extends BaseController {
 	 * @throws InvalidCardException - if the string does not represent a valid date
 	 *                              in the expected format
 	 */
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
 	private String getExpirationDate(String date) throws InvalidCardException {
 		String[] strs = date.split("/");
 		if (strs.length != 2) {
@@ -84,7 +85,7 @@ public class PaymentController extends BaseController {
 	 * @return {@link Map Map} represent the payment result with a
 	 *         message.
 	 */
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
 	public Map<String, String> payOrder(int amount, String contents, String cardNumber, String cardHolderName,
 			String expirationDate, String securityCode) {
 		Map<String, String> result = new Hashtable<String, String>();
@@ -108,7 +109,7 @@ public class PaymentController extends BaseController {
 	}
 
 	public void emptyCart(){
-		// content coupling do thay đổi dữ liệu của SessionInformaition
-        SessionInformation.cartInstance.emptyCart();
+		// content coupling do thay Ä‘á»•i dá»¯ liá»‡u cá»§a SessionInformaition
+		SessionInformation.cart.emptyCart();
     }
 }

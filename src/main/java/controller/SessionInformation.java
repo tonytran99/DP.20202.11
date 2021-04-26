@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class SessionInformation {
 	// content coupling do để dữ liệu ở dạng public dẫn đến có thể truy cập từ bất cứ đâu là thay đổi
     public static User mainUser;
-    public static Cart cartInstance = new Cart();
+    public static Cart cart = Cart.getInstance();
     public static LocalDateTime expiredTime;
 
 }

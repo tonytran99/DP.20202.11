@@ -18,10 +18,14 @@ import java.util.regex.Pattern;
 
 /**
  * This class controls the flow of place order usecase in our AIMS project
+
  * @author nguyenlm
  */
+//SOLID: vi phạm nguyên lý SRP do class chứa nhiều hàm validate
+//SOLID: vi phạm nguyên lý OCP do phương thức validateDeliveryInfo thay đổi khi info người dùng thay đổi
+//SOLID: vi phạm nguyên lý OCP do phương thức processDeliveryInfo thay đổi khi thông tin giao hàng có thêm hoặc giảm bớt đi các thuộc tính
+// Logical cohension do co nhieu ham tuong tu nhau 
 
-// logical cohesion do cùng thực hiện phương thức validatePhone, validateName,...
 // logical cohesion, cac phuong thuc validate nhu validateDeliveryInfo , validatePhoneNumber, validateName, validateAddress can duoc tach rieng vao mot lop
 public class PlaceOrderController extends BaseController {
 
@@ -35,8 +39,8 @@ public class PlaceOrderController extends BaseController {
      * @throws SQLException
      */
     public void placeOrder() throws SQLException {
-    	// common coupling do sử dụng biến toàn cục SessionIformation
-        SessionInformation.cartInstance.checkAvailabilityOfProduct();
+    	// common coupling do sÃ¡Â»Â­ dÃ¡Â»Â¥ng biÃ¡ÂºÂ¿n toÃƒÂ n cÃ¡Â»Â¥c SessionIformation
+    	SessionInformation.cart.checkAvailabilityOfProduct();
     }
 
     /**
@@ -45,8 +49,8 @@ public class PlaceOrderController extends BaseController {
      * @throws SQLException
      */
     public Order createOrder() throws SQLException {
-    	// common coupling do sử dụng biến toàn cục SessionIformation
-        return new Order(SessionInformation.cartInstance);
+    	// common coupling do sÃ¡Â»Â­ dÃ¡Â»Â¥ng biÃ¡ÂºÂ¿n toÃƒÂ n cÃ¡Â»Â¥c SessionIformation
+    	return new Order(SessionInformation.cart);
     }
 
     /**
@@ -54,7 +58,7 @@ public class PlaceOrderController extends BaseController {
      * @param order
      * @return Invoice
      */
-    // data coupling do truy�?n và sử dụng hết dữ liệu
+    // data coupling do truyÃ¡Â»ï¿½n vÃƒÂ  sÃ¡Â»Â­ dÃ¡Â»Â¥ng hÃ¡ÂºÂ¿t dÃ¡Â»Â¯ liÃ¡Â»â€¡u
     public Invoice createInvoice(Order order) {
         return new Invoice(order);
     }
@@ -65,7 +69,7 @@ public class PlaceOrderController extends BaseController {
      * @throws InterruptedException
      * @throws IOException
      */
-    // data coupling do truy�?n và sử dụng hết dữ liệu
+    // data coupling do truyÃ¡Â»ï¿½n vÃƒÂ  sÃ¡Â»Â­ dÃ¡Â»Â¥ng hÃ¡ÂºÂ¿t dÃ¡Â»Â¯ liÃ¡Â»â€¡u
     public DeliveryInfo processDeliveryInfo(HashMap info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
         LOGGER.info("Process Delivery Info");
         LOGGER.info(info.toString());
@@ -87,14 +91,14 @@ public class PlaceOrderController extends BaseController {
    * @throws InterruptedException
    * @throws IOException
    */
-    //stamp coupling do truy�?n cả đối tương info và không sử dụng hết
+    //stamp coupling do truyÃ¡Â»ï¿½n cÃ¡ÂºÂ£ Ã„â€˜Ã¡Â»â€˜i tÃ†Â°Ã†Â¡ng info vÃƒÂ  khÃƒÂ´ng sÃ¡Â»Â­ dÃ¡Â»Â¥ng hÃ¡ÂºÂ¿t
     public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
         if (validatePhoneNumber(info.get("phone"))
         || validateName(info.get("name"))
         || validateAddress(info.get("address"))) return;
         else throw new InvalidDeliveryInfoException();
     }
-    // data coupling do truy�?n và sử dụng hết dữ liệu
+    // data coupling do truyÃ¡Â»ï¿½n vÃƒÂ  sÃ¡Â»Â­ dÃ¡Â»Â¥ng hÃ¡ÂºÂ¿t dÃ¡Â»Â¯ liÃ¡Â»â€¡u
     public boolean validatePhoneNumber(String phoneNumber) {
         if (phoneNumber.length() != 10) return false;
         if (!phoneNumber.startsWith("0")) return false;
@@ -105,7 +109,7 @@ public class PlaceOrderController extends BaseController {
         }
         return true;
     }
-    // data coupling do truy�?n và sử dụng hết dữ liệu
+    // data coupling do truyÃ¡Â»ï¿½n vÃƒÂ  sÃ¡Â»Â­ dÃ¡Â»Â¥ng hÃ¡ÂºÂ¿t dÃ¡Â»Â¯ liÃ¡Â»â€¡u
     public boolean validateName(String name) {
         if (Objects.isNull(name)) return false;
         String patternString = "^[a-zA-Z\\s]*$";
@@ -113,7 +117,7 @@ public class PlaceOrderController extends BaseController {
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
     }
-    // data coupling do truy�?n và sử dụng hết dữ liệu
+    // data coupling do truyÃ¡Â»ï¿½n vÃƒÂ  sÃ¡Â»Â­ dÃ¡Â»Â¥ng hÃ¡ÂºÂ¿t dÃ¡Â»Â¯ liÃ¡Â»â€¡u
     public boolean validateAddress(String address) {
         if (Objects.isNull(address)) return false;
         String patternString = "^[a-zA-Z\\s]*$";

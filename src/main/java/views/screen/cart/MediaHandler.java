@@ -85,7 +85,7 @@ public class MediaHandler extends FXMLScreenHandler {
 		btnDelete.setFont(ViewsConfig.REGULAR_FONT); // content coupling do thay doi du lieu cua btnDelete
 		btnDelete.setOnMouseClicked(e -> {
 			try {
-				SessionInformation.cartInstance.removeCartMedia(cartItem); // update user cart
+				SessionInformation.cart.removeCartMedia(cartItem); // update user cart
 				cartScreen.updateCart(); // re-display user cart
 				LOGGER.info("Deleted " + cartItem.getMedia().getTitle() + " from the cart");
 			} catch (SQLException exp) {

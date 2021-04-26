@@ -17,7 +17,7 @@ public class ViewCartController extends BaseController{
      */
     public void checkAvailabilityOfProduct() throws SQLException{
     	// common coupling do sử dụng biến toàn cục SessionIformation
-        SessionInformation.cartInstance.checkAvailabilityOfProduct();
+    	SessionInformation.cart.checkAvailabilityOfProduct();
     }
 
     /**
@@ -26,7 +26,7 @@ public class ViewCartController extends BaseController{
      */
     public int getCartSubtotal(){
     	// common coupling do sử dụng biến toàn cục SessionIformation
-        int subtotal = SessionInformation.cartInstance.calSubtotal();
+    	int subtotal = SessionInformation.cart.calSubtotal();
         return subtotal;
     }
 
