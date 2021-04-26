@@ -80,6 +80,8 @@ public class LoginScreenHandler extends BaseScreenHandler{
         }
     }
 
+
+    //Concidental Cohesion: nen o trong class Utils
     @FXML
     void backToHomeScreen(MouseEvent event) throws IOException, InterruptedException, SQLException {
         this.homeScreenHandler.show();

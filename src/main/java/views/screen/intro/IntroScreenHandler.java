@@ -16,6 +16,7 @@ import views.screen.BaseScreenHandler;
 import views.screen.popup.PopupScreen;
 
 public class IntroScreenHandler extends BaseScreenHandler {
+	// singleton design pattern
 
     private static final Logger LOGGER = Utils.getLogger(IntroScreenHandler.class.getName()); //content coupling do thay ??i du lieu cua LOGGER
 
@@ -23,7 +24,7 @@ public class IntroScreenHandler extends BaseScreenHandler {
     @FXML
     ImageView logo;
     //content coupling do thay doi du lieu cua LOGGER
-    // common coupling do phuong thuc là public có the thay  bat cu khi nào goi toi
+    // common coupling do phuong thuc lï¿½ public cï¿½ the thay  bat cu khi nï¿½o goi toi
     // Temporal cohesion khi cac method dc gom gai theo thoi gian su ly
     public IntroScreenHandler(Stage stage, String screenPath) throws IOException {
         super(stage, screenPath);
@@ -45,7 +46,7 @@ public class IntroScreenHandler extends BaseScreenHandler {
         return;
     }
     //content coupling do thay doi du lieu cua LOGGER
-    // common coupling do phuong thuc là public có the thay  bat cu khi nào goi toi
+    // common coupling do phuong thuc lï¿½ public cï¿½ the thay  bat cu khi nï¿½o goi toi
     protected void setupFunctionality() throws Exception {
         File file = new File("src/main/resources/assets/images/Logo.png");
         Image image = new Image(file.toURI().toString());

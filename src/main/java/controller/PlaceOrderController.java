@@ -26,6 +26,7 @@ import java.util.regex.Pattern;
 //SOLID: vi phạm nguyên lý OCP do phương thức processDeliveryInfo thay đổi khi thông tin giao hàng có thêm hoặc giảm bớt đi các thuộc tính
 // Logical cohension do co nhieu ham tuong tu nhau 
 
+// logical cohesion, cac phuong thuc validate nhu validateDeliveryInfo , validatePhoneNumber, validateName, validateAddress can duoc tach rieng vao mot lop
 public class PlaceOrderController extends BaseController {
 
     /**

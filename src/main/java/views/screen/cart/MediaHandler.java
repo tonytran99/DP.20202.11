@@ -27,6 +27,7 @@ import views.screen.ViewsConfig;
 
 public class MediaHandler extends FXMLScreenHandler {
 
+	// singleton design pattern
 	private static Logger LOGGER = Utils.getLogger(MediaHandler.class.getName());
 
 	@FXML

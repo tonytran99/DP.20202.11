@@ -53,8 +53,8 @@ public class CartScreenHandler extends BaseScreenHandler {
 	@FXML
 	private Button btnPlaceOrder;
         //content coupling do doi du lieu cua LOGGER
-        // common coupling do day la phuong thuc public nên có the thay the bat cu lúc nào
-        // data coupling do truyen và su dung het du lieu
+        // common coupling do day la phuong thuc public nï¿½n cï¿½ the thay the bat cu lï¿½c nï¿½o
+        // data coupling do truyen vï¿½ su dung het du lieu
 	public CartScreenHandler(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
 		try {
@@ -67,8 +67,10 @@ public class CartScreenHandler extends BaseScreenHandler {
 			PopupScreen.error(ex.getMessage());
 		}
 	}
+
+		// Temporal cohesion: setOnMouseClicked  va setOnMouseClicked doc lap
         // content coupling do doi du lieu cua aimsImage
-        // common coupling do day la phuong thuc public nên có the thay the bat cu lúc nào
+        // common coupling do day la phuong thuc public nï¿½n cï¿½ the thay the bat cu lï¿½c nï¿½o
 	protected void setupFunctionality() throws Exception {
 		// fix relative image path caused by fxml
 		File file = new File(ViewsConfig.IMAGE_PATH + "/Logo.png");
@@ -97,7 +99,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 	public ViewCartController getBController(){
 		return (ViewCartController) super.getBController();
 	}
-        // common coupling do day la phuong thuc public nên có the thay the bat cu lúc nào
+        // common coupling do day la phuong thuc public nï¿½n cï¿½ the thay the bat cu lï¿½c nï¿½o
 	public void requestToViewCart(BaseScreenHandler prevScreen) throws SQLException {
 		setPreviousScreen(prevScreen);
 		setScreenTitle("Cart Screen");
@@ -105,7 +107,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 		displayCartWithMediaAvailability();
 		show();
 	}
-     // common coupling do day la phuong thuc public nên có the thay the bat cu lúc nào
+     // common coupling do day la phuong thuc public nï¿½n cï¿½ the thay the bat cu lï¿½c nï¿½o
 	public void requestToPlaceOrder() throws SQLException, IOException {
 		try {
 			// create placeOrderController and process the order
@@ -155,7 +157,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 		labelVAT.setText(ViewsConfig.getCurrencyFormat(vat)); // content coupling do thay ??i d? li?u c?a labelVAT
 		labelAmount.setText(ViewsConfig.getCurrencyFormat(amount)); // content coupling do thay ??i d? li?u c?a labelAmount
 	}
-	//   common coupling do phuong thuc dang  public nên có the thay doi khi nao goi
+	//   common coupling do phuong thuc dang  public nï¿½n cï¿½ the thay doi khi nao goi
 	private void displayCartWithMediaAvailability(){
 		// clear all old cartMedia
 		vboxCart.getChildren().clear(); // content coupling do do doi du lieu cua vboxCart
