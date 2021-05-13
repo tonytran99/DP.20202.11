@@ -17,10 +17,10 @@ import java.util.List;
 //Fuctional cohension do cac phuong thuc lien quan ho tro thao tac DAO
 public class MediaDAO {
 
-    public List getAllMedia() throws SQLException {
+    public List<Object> getAllMedia() throws SQLException {
         Statement stm = AIMSDB.getConnection().createStatement();
         ResultSet res = stm.executeQuery("select * from Media");
-        ArrayList medium = new ArrayList<>();
+        ArrayList<Object> medium = new ArrayList<>();
         while (res.next()) {
             Media media = new Media(
                     res.getInt("id"),
@@ -36,7 +36,7 @@ public class MediaDAO {
     }
     // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
     public Media getMediaById(int id) throws SQLException {
-        String sql = "SELECT * FROM Media ;";
+        String sql = "SELECT * FROM Media where id = " + id;
         Statement stm = AIMSDB.getConnection().createStatement();
         ResultSet res = stm.executeQuery(sql);
 

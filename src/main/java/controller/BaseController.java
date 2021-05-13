@@ -2,7 +2,6 @@ package controller;
 
 import java.util.List;
 
-import entity.cart.Cart;
 import entity.cart.CartItem;
 import entity.media.Media;
 
@@ -28,7 +27,7 @@ public class BaseController {
      * This method gets the list of items in cart
      * @return List[CartMedia]
      */
-    public List getListCartMedia(){
+    public List<?> getListCartMedia(){
     	// common coupling do sá»­ dá»¥ng biáº¿n toÃ n cá»¥c SessionIformation
     	return SessionInformation.cart.getListMedia();
     }

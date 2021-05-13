@@ -15,7 +15,7 @@ public class Order {
     private int shippingFees;
     private int subtotal; // tổng giá ti�?n của sản phẩm
     private int tax;// 
-    private List orderMediaList;
+    private List<OrderItem> orderMediaList;
     //  Nên để ở private
     protected DeliveryInfo deliveryInfo;
     public Order() {
@@ -40,7 +40,7 @@ public class Order {
         this.tax = (int) (ViewsConfig.PERCENT_VAT/100) * subtotal;
     }
 
-    public List getListOrderMedia() {
+    public List<OrderItem> getListOrderMedia() {
         return this.orderMediaList;
     }
 
@@ -59,7 +59,7 @@ public class Order {
         this.shippingFees = deliveryInfo.calculateShippingFee(this);
     }
 
-    public List getOrderMediaList() {
+    public List<OrderItem> getOrderMediaList() {
         return orderMediaList;
     }
 
