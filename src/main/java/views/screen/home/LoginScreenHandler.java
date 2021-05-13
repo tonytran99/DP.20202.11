@@ -45,34 +45,24 @@ public class LoginScreenHandler extends BaseScreenHandler{
     private PasswordField password;
 
     public LoginScreenHandler(Stage stage, String screenPath) throws IOException{
-        super(stage, screenPath);
-        try {
-            setupData(null);
-            setupFunctionality();
-        } catch (IOException ex) {
-            LOGGER.info(ex.getMessage());
-            PopupScreen.error("Error when loading resources.");
-        } catch (Exception ex) {
-            LOGGER.info(ex.getMessage());
-            PopupScreen.error(ex.getMessage());
-        }
+        super(stage, screenPath,null);
+
     }
 
     public AuthenticationController getBController() {
         return (AuthenticationController) super.getBController();
     }
-
-    // Stamp coupling : Trueyn doi tuong dto nhung khong su dung
+    @Override
     protected void setupData(Object dto) throws Exception {
     }
-
+    @Override
     protected void setupFunctionality() throws Exception {
     }
 
     @FXML
     void login(MouseEvent event) throws IOException, InterruptedException, SQLException {
         try {
-            getBController().login(email.getText(), password.getText()); // content coupling khi su dung code cua object email
+            getBController().login(email.getText(), password.getText());
             PopupScreen.success("Login Successfully!");
             backToHomeScreen(event);
         } catch (Exception ex) {
@@ -80,8 +70,6 @@ public class LoginScreenHandler extends BaseScreenHandler{
         }
     }
 
-
-    //Concidental Cohesion: nen o trong class Utils
     @FXML
     void backToHomeScreen(MouseEvent event) throws IOException, InterruptedException, SQLException {
         this.homeScreenHandler.show();

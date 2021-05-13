@@ -16,37 +16,24 @@ import views.screen.BaseScreenHandler;
 import views.screen.popup.PopupScreen;
 
 public class IntroScreenHandler extends BaseScreenHandler {
-	// singleton design pattern
 
-    private static final Logger LOGGER = Utils.getLogger(IntroScreenHandler.class.getName()); //content coupling do thay ??i du lieu cua LOGGER
+    private static final Logger LOGGER = Utils.getLogger(IntroScreenHandler.class.getName());
 
 
     @FXML
     ImageView logo;
-    //content coupling do thay doi du lieu cua LOGGER
-    // common coupling do phuong thuc l� public c� the thay  bat cu khi n�o goi toi
-    // Temporal cohesion khi cac method dc gom gai theo thoi gian su ly
-    public IntroScreenHandler(Stage stage, String screenPath) throws IOException {
-        super(stage, screenPath);
 
-        try {
-            setupData(null);
-            setupFunctionality();
-        } catch (IOException ex) {
-            LOGGER.info(ex.getMessage()); 
-            PopupScreen.error("Error when loading resources.");
-        } catch (Exception ex) {
-            LOGGER.info(ex.getMessage());
-            PopupScreen.error(ex.getMessage());
-        }
+    public IntroScreenHandler(Stage stage, String screenPath) throws IOException {
+        super(stage, screenPath,null);
+
+
     }
 
-    // stamp coupling:Trueyn doi tuong dto nhung khong su dung
+    @Override
     protected void setupData(Object dto) throws Exception {
         return;
     }
-    //content coupling do thay doi du lieu cua LOGGER
-    // common coupling do phuong thuc l� public c� the thay  bat cu khi n�o goi toi
+    @Override
     protected void setupFunctionality() throws Exception {
         File file = new File("src/main/resources/assets/images/Logo.png");
         Image image = new Image(file.toURI().toString());

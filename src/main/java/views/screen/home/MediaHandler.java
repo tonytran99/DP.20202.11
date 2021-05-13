@@ -65,8 +65,8 @@ public class MediaHandler extends FXMLScreenHandler implements Observable {
     int getRequestQuantity() {
         return spinnerChangeNumber.getValue();
     }
-
-    private void setMediaInfo() throws SQLException {
+    @Override
+    protected void setMediaInfo() throws SQLException {
         // set the cover image of media
         File file = new File(media.getImageURL());
         Image image = new Image(file.toURI().toString());
@@ -78,7 +78,7 @@ public class MediaHandler extends FXMLScreenHandler implements Observable {
         mediaPrice.setText(ViewsConfig.getCurrencyFormat(media.getPrice()));
         mediaAvail.setText(Integer.toString(media.getQuantity()));
         spinnerChangeNumber.setValueFactory(
-            new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1)
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1)
         );
 
         setImage(mediaImage, media.getImageURL());
