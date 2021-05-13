@@ -10,11 +10,11 @@ import java.sql.SQLException;
  * @author
  */
 public class UserDAO {
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    // Data coupling do truyen va su dung het du lieu
     public User authenticate(String email, String encryptedPassword) throws SQLException {
         String sql = "SELECT * FROM User " +
                 "where email = '" + email + "' and encrypted_password = '" + encryptedPassword + "'";
-        // common coupling do sá»­ dá»¥ng biáº¿n toÃ n cá»¥c AIMSDB
+        // Common coupling do su dung bien toan cuc AIMSDB
         ResultSet res =  AIMSDB.getConnection().createStatement().executeQuery(sql);
         if(res.next()) {
             return new User(

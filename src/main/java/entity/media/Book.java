@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.Date;
 
 public class Book extends Media {
-	// commom vÃ  content coupling do Ä‘á»ƒ dá»¯ liá»‡u á»Ÿ dáº¡ng public Ä‘áº«n Ä‘áº¿n cÃ³ thá»ƒ láº¥y vÃ  thay Ä‘á»•i báº¥t cá»© lÃºc nÃ o
+	// commom va  content coupling do thuoc tinh de public
     String author;
     String coverType;
     String publisher;
@@ -16,7 +16,7 @@ public class Book extends Media {
     public Book() throws SQLException{
 
     }
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    //Data coupling do truyen va su dung het du lieu
     public Book(int id, String title, String category, int price, int quantity, String type, String author,
             String coverType, String publisher, Date publishDate, int numOfPages, String language,
             String bookCategory) throws SQLException{
@@ -38,7 +38,7 @@ public class Book extends Media {
     public String getAuthor() {
         return this.author;
     }
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    // Data coupling do truyen va su dung het du lieu
     public Book setAuthor(String author) {
         this.author = author;
         return this;
@@ -48,7 +48,7 @@ public class Book extends Media {
         return this.coverType;
     }
     
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    // Data coupling do truyen va su dung het du lieu
     public Book setCoverType(String coverType) {
         this.coverType = coverType;
         return this;
@@ -57,7 +57,7 @@ public class Book extends Media {
     public String getPublisher() {
         return this.publisher;
     }
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    // Data coupling do truyen va su dung het du lieu
     public Book setPublisher(String publisher) {
         this.publisher = publisher;
         return this;
@@ -66,7 +66,7 @@ public class Book extends Media {
     public Date getPublishDate() {
         return this.publishDate;
     }
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    //Data coupling do truyen va su dung het du lieu
     public Book setPublishDate(Date publishDate) {
         this.publishDate = publishDate;
         return this;
@@ -75,7 +75,7 @@ public class Book extends Media {
     public int getNumOfPages() {
         return this.numOfPages;
     }
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    //Data coupling do truyen va su dung het du lieu
     public Book setNumOfPages(int numOfPages) {
         this.numOfPages = numOfPages;
         return this;
@@ -84,7 +84,7 @@ public class Book extends Media {
     public String getLanguage() {
         return this.language;
     }
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    //Data coupling do truyen va su dung het du lieu
     public Book setLanguage(String language) {
         this.language = language;
         return this;
@@ -93,7 +93,7 @@ public class Book extends Media {
     public String getBookCategory() {
         return this.bookCategory;
     }
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    //Data coupling do truyen va su dung het du lieu
     public Book setBookCategory(String bookCategory) {
         this.bookCategory = bookCategory;
         return this;

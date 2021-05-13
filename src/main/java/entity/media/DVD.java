@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.Date;
 
 public class DVD extends Media {
-	// commom vÃ  content coupling do Ä‘á»ƒ dá»¯ liá»‡u á»Ÿ dáº¡ng public Ä‘áº«n Ä‘áº¿n cÃ³ thá»ƒ láº¥y vÃ  thay Ä‘á»•i báº¥t cá»© lÃºc nÃ o
+	// commom va content coupling do khong de thuoc tinh private
     String discType;
     String director;
     int runtime;
@@ -16,7 +16,7 @@ public class DVD extends Media {
     public DVD() throws SQLException{
 
     }
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    // Data coupling do truyen va su dung het du lieu
     public DVD(int id, String title, String category, int price, int quantity, String type, String discType,
             String director, int runtime, String studio, String subtitles, Date releasedDate, String filmType) throws SQLException{
         super(id, title, category, price, quantity, type);
@@ -32,7 +32,7 @@ public class DVD extends Media {
     public String getDiscType() {
         return this.discType;
     }
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    // Data coupling do truyen va su dung het du lieu
     public DVD setDiscType(String discType) {
         this.discType = discType;
         return this;
@@ -41,7 +41,7 @@ public class DVD extends Media {
     public String getDirector() {
         return this.director;
     }
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    // Data coupling do truyen va su dung het du lieu
     public DVD setDirector(String director) {
         this.director = director;
         return this;
@@ -50,7 +50,7 @@ public class DVD extends Media {
     public int getRuntime() {
         return this.runtime;
     }
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    // Data coupling do truyen va su dung het du lieu
     public DVD setRuntime(int runtime) {
         this.runtime = runtime;
         return this;
@@ -59,7 +59,7 @@ public class DVD extends Media {
     public String getStudio() {
         return this.studio;
     }
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    // Data coupling do truyen va su dung het du lieu
     public DVD setStudio(String studio) {
         this.studio = studio;
         return this;
@@ -68,7 +68,7 @@ public class DVD extends Media {
     public String getSubtitles() {
         return this.subtitles;
     }
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    // Data coupling do truyen va su dung het du lieu
     public DVD setSubtitles(String subtitles) {
         this.subtitles = subtitles;
         return this;
@@ -77,7 +77,7 @@ public class DVD extends Media {
     public Date getReleasedDate() {
         return this.releasedDate;
     }
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    // Data coupling do truyen va su dung het du lieu
     public DVD setReleasedDate(Date releasedDate) {
         this.releasedDate = releasedDate;
         return this;
@@ -86,7 +86,7 @@ public class DVD extends Media {
     public String getFilmType() {
         return this.filmType;
     }
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    // Data coupling do truyen va su dung het du lieu
     public DVD setFilmType(String filmType) {
         this.filmType = filmType;
         return this;

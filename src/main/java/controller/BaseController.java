@@ -17,9 +17,9 @@ public class BaseController {
      * @param media
      * @return CartMedia or null
      */
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    // Data coupling do truyen su dung het du lieu
     public CartItem checkMediaInCart(Media media){
-    	// common coupling do sá»­ dá»¥ng biáº¿n toÃ n cá»¥c SessionIformation
+    	// common coupling do su dung bien toan cuc SessionIformation
     	 return SessionInformation.cart.checkMediaInCart(media);
     }
 
@@ -28,7 +28,7 @@ public class BaseController {
      * @return List[CartMedia]
      */
     public List<?> getListCartMedia(){
-    	// common coupling do sá»­ dá»¥ng biáº¿n toÃ n cá»¥c SessionIformation
+    	// common coupling do su dung bien toan cuc SessionIformation
     	return SessionInformation.cart.getListMedia();
     }
 }
