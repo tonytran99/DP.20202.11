@@ -24,7 +24,7 @@ import utils.Utils;
 import views.screen.FXMLScreenHandler;
 import views.screen.ViewsConfig;
 import views.screen.popup.PopupScreen;
-
+// Clean code - Với yêu cầu thêm 1 media thì khi thay đổi các property trong class Media thì cũng phải thay đổi code hiển thị Media trong class MediaHandler
 public class MediaHandler extends FXMLScreenHandler implements Observable {
 
     @FXML

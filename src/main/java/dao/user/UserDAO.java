@@ -1,23 +1,20 @@
 package dao.user;
 
 import entity.db.AIMSDB;
-import entity.media.Book;
 import entity.user.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Date;
 
 /**
  * @author
  */
 public class UserDAO {
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
     public User authenticate(String email, String encryptedPassword) throws SQLException {
         String sql = "SELECT * FROM User " +
                 "where email = '" + email + "' and encrypted_password = '" + encryptedPassword + "'";
-        // common coupling do sử dụng biến toàn cục AIMSDB
+        // common coupling do sá»­ dá»¥ng biáº¿n toÃ n cá»¥c AIMSDB
         ResultSet res =  AIMSDB.getConnection().createStatement().executeQuery(sql);
         if(res.next()) {
             return new User(

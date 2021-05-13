@@ -1,13 +1,9 @@
 package controller;
 
 import common.exception.InvalidDeliveryInfoException;
-import entity.cart.Cart;
-import entity.cart.CartItem;
 import entity.invoice.Invoice;
 import entity.order.Order;
-import entity.order.OrderItem;
 import entity.shipping.DeliveryInfo;
-import entity.shipping.ShippingConfigs;
 import org.example.DistanceCalculator;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -21,9 +17,9 @@ import java.util.regex.Pattern;
 
  * @author nguyenlm
  */
-//SOLID: vi phạm nguyên lý SRP do class chứa nhiều hàm validate
-//SOLID: vi phạm nguyên lý OCP do phương thức validateDeliveryInfo thay đổi khi info người dùng thay đổi
-//SOLID: vi phạm nguyên lý OCP do phương thức processDeliveryInfo thay đổi khi thông tin giao hàng có thêm hoặc giảm bớt đi các thuộc tính
+//SOLID: vi pháº¡m nguyÃªn lÃ½ SRP do class chá»©a nhiá»�u hÃ m validate
+//SOLID: vi pháº¡m nguyÃªn lÃ½ OCP do phÆ°Æ¡ng thá»©c validateDeliveryInfo thay Ä‘á»•i khi info ngÆ°á»�i dÃ¹ng thay Ä‘á»•i
+//SOLID: vi pháº¡m nguyÃªn lÃ½ OCP do phÆ°Æ¡ng thá»©c processDeliveryInfo thay Ä‘á»•i khi thÃ´ng tin giao hÃ ng cÃ³ thÃªm hoáº·c giáº£m bá»›t Ä‘i cÃ¡c thuá»™c tÃ­nh
 // Logical cohension do co nhieu ham tuong tu nhau 
 
 // logical cohesion, cac phuong thuc validate nhu validateDeliveryInfo , validatePhoneNumber, validateName, validateAddress can duoc tach rieng vao mot lop
@@ -39,7 +35,7 @@ public class PlaceOrderController extends BaseController {
      * @throws SQLException
      */
     public void placeOrder() throws SQLException {
-    	// common coupling do sÃ¡Â»Â­ dÃ¡Â»Â¥ng biÃ¡ÂºÂ¿n toÃƒÂ n cÃ¡Â»Â¥c SessionIformation
+    	// common coupling do sÃƒÂ¡Ã‚Â»Ã‚Â­ dÃƒÂ¡Ã‚Â»Ã‚Â¥ng biÃƒÂ¡Ã‚ÂºÃ‚Â¿n toÃƒÆ’Ã‚Â n cÃƒÂ¡Ã‚Â»Ã‚Â¥c SessionIformation
     	SessionInformation.cart.checkAvailabilityOfProduct();
     }
 
@@ -49,7 +45,7 @@ public class PlaceOrderController extends BaseController {
      * @throws SQLException
      */
     public Order createOrder() throws SQLException {
-    	// common coupling do sÃ¡Â»Â­ dÃ¡Â»Â¥ng biÃ¡ÂºÂ¿n toÃƒÂ n cÃ¡Â»Â¥c SessionIformation
+    	// common coupling do sÃƒÂ¡Ã‚Â»Ã‚Â­ dÃƒÂ¡Ã‚Â»Ã‚Â¥ng biÃƒÂ¡Ã‚ÂºÃ‚Â¿n toÃƒÆ’Ã‚Â n cÃƒÂ¡Ã‚Â»Ã‚Â¥c SessionIformation
     	return new Order(SessionInformation.cart);
     }
 
@@ -58,7 +54,7 @@ public class PlaceOrderController extends BaseController {
      * @param order
      * @return Invoice
      */
-    // data coupling do truyÃ¡Â»ï¿½n vÃƒÂ  sÃ¡Â»Â­ dÃ¡Â»Â¥ng hÃ¡ÂºÂ¿t dÃ¡Â»Â¯ liÃ¡Â»â€¡u
+    // data coupling do truyÃƒÂ¡Ã‚Â»Ã¯Â¿Â½n vÃƒÆ’Ã‚Â  sÃƒÂ¡Ã‚Â»Ã‚Â­ dÃƒÂ¡Ã‚Â»Ã‚Â¥ng hÃƒÂ¡Ã‚ÂºÃ‚Â¿t dÃƒÂ¡Ã‚Â»Ã‚Â¯ liÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¡u
     public Invoice createInvoice(Order order) {
         return new Invoice(order);
     }
@@ -69,8 +65,8 @@ public class PlaceOrderController extends BaseController {
      * @throws InterruptedException
      * @throws IOException
      */
-    // data coupling do truyÃ¡Â»ï¿½n vÃƒÂ  sÃ¡Â»Â­ dÃ¡Â»Â¥ng hÃ¡ÂºÂ¿t dÃ¡Â»Â¯ liÃ¡Â»â€¡u
-    public DeliveryInfo processDeliveryInfo(HashMap info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
+    // data coupling do truyÃƒÂ¡Ã‚Â»Ã¯Â¿Â½n vÃƒÆ’Ã‚Â  sÃƒÂ¡Ã‚Â»Ã‚Â­ dÃƒÂ¡Ã‚Â»Ã‚Â¥ng hÃƒÂ¡Ã‚ÂºÃ‚Â¿t dÃƒÂ¡Ã‚Â»Ã‚Â¯ liÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¡u
+    public DeliveryInfo processDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
         LOGGER.info("Process Delivery Info");
         LOGGER.info(info.toString());
         validateDeliveryInfo(info);
@@ -91,14 +87,14 @@ public class PlaceOrderController extends BaseController {
    * @throws InterruptedException
    * @throws IOException
    */
-    //stamp coupling do truyÃ¡Â»ï¿½n cÃ¡ÂºÂ£ Ã„â€˜Ã¡Â»â€˜i tÃ†Â°Ã†Â¡ng info vÃƒÂ  khÃƒÂ´ng sÃ¡Â»Â­ dÃ¡Â»Â¥ng hÃ¡ÂºÂ¿t
+    //stamp coupling do truyÃƒÂ¡Ã‚Â»Ã¯Â¿Â½n cÃƒÂ¡Ã‚ÂºÃ‚Â£ Ãƒâ€žÃ¢â‚¬ËœÃƒÂ¡Ã‚Â»Ã¢â‚¬Ëœi tÃƒâ€ Ã‚Â°Ãƒâ€ Ã‚Â¡ng info vÃƒÆ’Ã‚Â  khÃƒÆ’Ã‚Â´ng sÃƒÂ¡Ã‚Â»Ã‚Â­ dÃƒÂ¡Ã‚Â»Ã‚Â¥ng hÃƒÂ¡Ã‚ÂºÃ‚Â¿t
     public void validateDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
         if (validatePhoneNumber(info.get("phone"))
         || validateName(info.get("name"))
         || validateAddress(info.get("address"))) return;
         else throw new InvalidDeliveryInfoException();
     }
-    // data coupling do truyÃ¡Â»ï¿½n vÃƒÂ  sÃ¡Â»Â­ dÃ¡Â»Â¥ng hÃ¡ÂºÂ¿t dÃ¡Â»Â¯ liÃ¡Â»â€¡u
+    // data coupling do truyÃƒÂ¡Ã‚Â»Ã¯Â¿Â½n vÃƒÆ’Ã‚Â  sÃƒÂ¡Ã‚Â»Ã‚Â­ dÃƒÂ¡Ã‚Â»Ã‚Â¥ng hÃƒÂ¡Ã‚ÂºÃ‚Â¿t dÃƒÂ¡Ã‚Â»Ã‚Â¯ liÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¡u
     public boolean validatePhoneNumber(String phoneNumber) {
         if (phoneNumber.length() != 10) return false;
         if (!phoneNumber.startsWith("0")) return false;
@@ -109,7 +105,7 @@ public class PlaceOrderController extends BaseController {
         }
         return true;
     }
-    // data coupling do truyÃ¡Â»ï¿½n vÃƒÂ  sÃ¡Â»Â­ dÃ¡Â»Â¥ng hÃ¡ÂºÂ¿t dÃ¡Â»Â¯ liÃ¡Â»â€¡u
+    // data coupling do truyÃƒÂ¡Ã‚Â»Ã¯Â¿Â½n vÃƒÆ’Ã‚Â  sÃƒÂ¡Ã‚Â»Ã‚Â­ dÃƒÂ¡Ã‚Â»Ã‚Â¥ng hÃƒÂ¡Ã‚ÂºÃ‚Â¿t dÃƒÂ¡Ã‚Â»Ã‚Â¯ liÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¡u
     public boolean validateName(String name) {
         if (Objects.isNull(name)) return false;
         String patternString = "^[a-zA-Z\\s]*$";
@@ -117,7 +113,7 @@ public class PlaceOrderController extends BaseController {
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
     }
-    // data coupling do truyÃ¡Â»ï¿½n vÃƒÂ  sÃ¡Â»Â­ dÃ¡Â»Â¥ng hÃ¡ÂºÂ¿t dÃ¡Â»Â¯ liÃ¡Â»â€¡u
+    // data coupling do truyÃƒÂ¡Ã‚Â»Ã¯Â¿Â½n vÃƒÆ’Ã‚Â  sÃƒÂ¡Ã‚Â»Ã‚Â­ dÃƒÂ¡Ã‚Â»Ã‚Â¥ng hÃƒÂ¡Ã‚ÂºÃ‚Â¿t dÃƒÂ¡Ã‚Â»Ã‚Â¯ liÃƒÂ¡Ã‚Â»Ã¢â‚¬Â¡u
     public boolean validateAddress(String address) {
         if (Objects.isNull(address)) return false;
         String patternString = "^[a-zA-Z\\s]*$";
