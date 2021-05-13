@@ -28,17 +28,7 @@ public class IntroScreenHandler extends BaseScreenHandler {
     // Temporal cohesion khi cac method dc gom gai theo thoi gian su ly
     public IntroScreenHandler(Stage stage, String screenPath) throws IOException {
         super(stage, screenPath);
-
-        try {
-            setupData(null);
-            setupFunctionality();
-        } catch (IOException ex) {
-            LOGGER.info(ex.getMessage()); 
-            PopupScreen.error("Error when loading resources.");
-        } catch (Exception ex) {
-            LOGGER.info(ex.getMessage());
-            PopupScreen.error(ex.getMessage());
-        }
+        setupDataAndFunction(null);
     }
 
     // stamp coupling:Trueyn doi tuong dto nhung khong su dung
