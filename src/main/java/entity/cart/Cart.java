@@ -31,7 +31,7 @@ public class Cart {
         lstCartItem.remove(cm);
     }
 
-    public List getListMedia(){
+    public List<CartItem> getListMedia(){
         return lstCartItem;
     }
 
@@ -58,14 +58,14 @@ public class Cart {
     }
 
     public void checkAvailabilityOfProduct() throws SQLException{
-        boolean allAvailable = true;
         for (Object object : lstCartItem) {
             CartItem cartItem = (CartItem) object;
             int requiredQuantity = cartItem.getQuantity();
             int availQuantity = cartItem.getMedia().getQuantity();
-            if (requiredQuantity > availQuantity) allAvailable = false;
+            if (requiredQuantity > availQuantity) {
+            	throw new MediaNotAvailableException("Some media not available");
+            }
         }
-        if (!allAvailable) throw new MediaNotAvailableException("Some media not available");
     }
     // stamp coupling do chÃ¡Â»â€° dÃƒÂ¹ng phÃ†Â°Ã†Â¡ng thÃ¡Â»Â©c getId cÃ¡Â»Â§a Media 
     public CartItem checkMediaInCart(Media media){
