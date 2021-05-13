@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 import common.exception.MediaUpdateException;
 import common.exception.ViewCartException;
 import controller.SessionInformation;
-import entity.cart.Cart;
 import entity.cart.CartItem;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -97,7 +96,7 @@ public class MediaHandler extends FXMLScreenHandler {
 		initializeSpinner();
 	}
         // content coupling do thay doi du lieu cua btnDelete,LOGGER,cartItem,labelOutOfStock,spinner,price
-        //common coupling do phuong thuc n�y l� public n�n c� the thay the bat cu l�c n�o duoc goi
+        //common coupling do phuong thuc public co the thay the bat cu luc nao duoc goi
 	private void initializeSpinner(){
 		SpinnerValueFactory<Integer> valueFactory = //
 			new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, cartItem.getQuantity());
