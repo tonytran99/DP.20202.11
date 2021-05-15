@@ -27,12 +27,12 @@ public class PaymentController extends BaseController {
 	/**
 	 * Represent the card used for payment
 	 */
-	private CreditCard card;
+	private CreditCard creditCard;
 
 	/**
 	 * Represent the Interbank subsystem
 	 */
-	private InterbankInterface interbank;
+	private InterbankInterface interbankInterface;
 
 	/**
 	 * Validate the input date which should be in the format "mm/yy", and then
@@ -89,14 +89,16 @@ public class PaymentController extends BaseController {
 		Map<String, String> result = new Hashtable<String, String>();
 		result.put("RESULT", "PAYMENT FAILED!");
 		try {
-			this.card = new CreditCard(
+			this.creditCard  = new CreditCard(
 					cardNumber,
 					cardHolderName,
 					getExpirationDate(expirationDate),
 					Integer.parseInt(securityCode));
 
-			this.interbank = new InterbankSubsystem();
-			interbank.payOrder(card, amount, contents);
+
+			this.interbankInterface = new InterbankSubsystem();
+			PaymentTransaction transaction = interbankInterface.payOrder(creditCard, amount, contents);
+
 
 			result.put("RESULT", "PAYMENT SUCCESSFUL!");
 			result.put("MESSAGE", "You have successfully paid the order!");

@@ -17,10 +17,11 @@ public class BaseController {
      * @param media
      * @return CartMedia or null
      */
-    // Data coupling do truyen su dung het du lieu
-    public CartItem checkMediaInCart(Media media){
-    	// common coupling do su dung bien toan cuc SessionIformation
-    	 return SessionInformation.cart.checkMediaInCart(media);
+    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    public CartItem checkMediaInCart(int idMedia){
+    	// common coupling do sá»­ dá»¥ng biáº¿n toÃ n cá»¥c SessionIformation
+        return SessionInformation.cart.checkMediaInCart(idMedia);
+
     }
 
     /**
