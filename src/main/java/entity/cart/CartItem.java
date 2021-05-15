@@ -9,9 +9,9 @@ public class CartItem {
     private int price;
 
     public CartItem(){
-    //Logical cohesion do cac th�nh phan item, price, quatity khac nhau ve ban chat
+    //Logical cohesion do cac th�nh phan item, price, quatity khac nhau ve ban chat
     }
-    // data coupling do truy�?n và sử dụng hết dữ liệu
+    // data coupling do truy�?n và sử dụng hết dữ liệu
     public CartItem(Media media, Cart cart, int quantity, int price) {
         this.media = media;
         this.quantity = quantity;
@@ -22,7 +22,7 @@ public class CartItem {
         return this.media;
     }
     
-    // data coupling do truy�?n và sử dụng hết dữ liệu
+    // data coupling do truy�?n và sử dụng hết dữ liệu
     public void setMedia(Media media) {
         this.media = media;
     }
@@ -30,7 +30,7 @@ public class CartItem {
     public int getQuantity() {
         return this.quantity;
     }
-    // data coupling do truy�?n và sử dụng hết dữ liệu
+    // data coupling do truy�?n và sử dụng hết dữ liệu
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
@@ -38,11 +38,13 @@ public class CartItem {
     public int getPrice() {
         return this.price;
     }
-    // data coupling do truy�?n và sử dụng hết dữ liệu
+    // data coupling do truy�?n và sử dụng hết dữ liệu
     public void setPrice(int price) {
         this.price = price;
     }
-
+    public int calPriceOneProduct(int price, int quantity) {
+        return price*quantity;
+    }
     @Override
     public String toString() {
         return "{" 

@@ -19,9 +19,9 @@ public class BaseController {
      * @return CartMedia or null
      */
     // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
-    public CartItem checkMediaInCart(Media media){
+    public CartItem checkMediaInCart(int idMedia){
     	// common coupling do sá»­ dá»¥ng biáº¿n toÃ n cá»¥c SessionIformation
-    	 return SessionInformation.cart.checkMediaInCart(media);
+        return SessionInformation.cart.checkMediaInCart(idMedia);
     }
 
     /**
