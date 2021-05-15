@@ -7,9 +7,7 @@ import java.util.Map;
 import common.exception.InvalidCardException;
 import common.exception.PaymentException;
 import common.exception.UnrecognizedException;
-import entity.cart.Cart;
 import entity.payment.CreditCard;
-import entity.payment.PaymentTransaction;
 import subsystem.InterbankInterface;
 import subsystem.InterbankSubsystem;
 
@@ -47,7 +45,7 @@ public class PaymentController extends BaseController {
 	 * @throws InvalidCardException - if the string does not represent a valid date
 	 *                              in the expected format
 	 */
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    // Data coupling do truyen va su dung het du lieu
 	private String getExpirationDate(String date) throws InvalidCardException {
 		String[] strs = date.split("/");
 		if (strs.length != 2) {
@@ -85,7 +83,7 @@ public class PaymentController extends BaseController {
 	 * @return {@link Map Map} represent the payment result with a
 	 *         message.
 	 */
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    //Data coupling do truyen va su dung het du lieu
 	public Map<String, String> payOrder(int amount, String contents, String cardNumber, String cardHolderName,
 			String expirationDate, String securityCode) {
 		Map<String, String> result = new Hashtable<String, String>();
@@ -97,8 +95,10 @@ public class PaymentController extends BaseController {
 					getExpirationDate(expirationDate),
 					Integer.parseInt(securityCode));
 
+
 			this.interbankInterface = new InterbankSubsystem();
 			PaymentTransaction transaction = interbankInterface.payOrder(creditCard, amount, contents);
+
 
 			result.put("RESULT", "PAYMENT SUCCESSFUL!");
 			result.put("MESSAGE", "You have successfully paid the order!");
@@ -109,7 +109,7 @@ public class PaymentController extends BaseController {
 	}
 
 	public void emptyCart(){
-		// content coupling do thay Ä‘á»•i dá»¯ liá»‡u cá»§a SessionInformaition
+		// content coupling do thay doi bien toan cuc SessionInformaition
 		SessionInformation.cart.emptyCart();
     }
 }

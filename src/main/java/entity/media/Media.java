@@ -16,7 +16,7 @@ public class Media {
 
     private static Logger LOGGER = Utils.getLogger(Media.class.getName());
     
-    // content and common coupling do không để dữ liệu ở dạng private khiến cho lớp con có thể truy cập và thay đổi giá trị 
+    // content and common coupling do cac thuoc tinh khong de private
     protected Statement stm;
     protected int id;
     protected String title;
@@ -31,7 +31,7 @@ public class Media {
     public Media() throws SQLException{
         stm = AIMSDB.getConnection().createStatement();
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // Data coupling do truyen va su dung het du lieu
     public Media (int id, String title, String category, int price, int quantity, String type) throws SQLException{
         this.id = id;
         this.title = title;
@@ -40,7 +40,7 @@ public class Media {
         this.quantity = quantity;
         this.type = type;
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // Data coupling do truyen va su dung het du lieu
     public Media(int id, String title, int quantity, String category, String imageUrl, int price, String type) throws SQLException {
         this(id, title, category, price, quantity, type);
         this.imageURL = imageUrl;
@@ -56,7 +56,7 @@ public class Media {
     public int getId() {
         return this.id;
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    //Data coupling do truyen va su dung het du lieu
     private Media setId(int id){
         this.id = id;
         return this;
@@ -65,7 +65,7 @@ public class Media {
     public String getTitle() {
         return this.title;
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // Data coupling do truyen va su dung het du lieu
     public Media setTitle(String title) {
         this.title = title;
         return this;
@@ -74,7 +74,7 @@ public class Media {
     public String getCategory() {
         return this.category;
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // Data coupling do truyen va su dung het du lieu
     public Media setCategory(String category) {
         this.category = category;
         return this;
@@ -83,7 +83,7 @@ public class Media {
     public int getPrice() {
         return this.price;
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // Data coupling do truyen va su dung het du lieu
     public Media setPrice(int price) {
         this.price = price;
         return this;
@@ -92,12 +92,12 @@ public class Media {
     public String getImageURL(){
         return this.imageURL;
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // Data coupling do truyen va su dung het du lieu
     public Media setMediaURL(String url){
         this.imageURL = url;
         return this;
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // Data coupling do truyen va su dung het du lieu
     public Media setQuantity(int quantity) {
         this.quantity = quantity;
         return this;
@@ -106,7 +106,7 @@ public class Media {
     public String getType() {
         return this.type;
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // Data coupling do truyen va su dung het du lieu
     public Media setType(String type) {
         this.type = type;
         return this;

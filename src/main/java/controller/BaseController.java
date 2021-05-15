@@ -2,7 +2,6 @@ package controller;
 
 import java.util.List;
 
-import entity.cart.Cart;
 import entity.cart.CartItem;
 import entity.media.Media;
 
@@ -22,14 +21,15 @@ public class BaseController {
     public CartItem checkMediaInCart(int idMedia){
     	// common coupling do sá»­ dá»¥ng biáº¿n toÃ n cá»¥c SessionIformation
         return SessionInformation.cart.checkMediaInCart(idMedia);
+
     }
 
     /**
      * This method gets the list of items in cart
      * @return List[CartMedia]
      */
-    public List getListCartMedia(){
-    	// common coupling do sá»­ dá»¥ng biáº¿n toÃ n cá»¥c SessionIformation
+    public List<?> getListCartMedia(){
+    	// common coupling do su dung bien toan cuc SessionIformation
     	return SessionInformation.cart.getListMedia();
     }
 }
