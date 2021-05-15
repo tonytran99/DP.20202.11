@@ -2,7 +2,6 @@ package views.screen;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
@@ -13,8 +12,7 @@ public class FXMLScreenHandler {
 
 	protected FXMLLoader loader;
 	protected AnchorPane content;
-
-	public FXMLScreenHandler(String screenPath) throws IOException {
+      	public FXMLScreenHandler(String screenPath) throws IOException {
 		this.loader = new FXMLLoader(getClass().getResource(screenPath));
 		// Set this class as the controller
 		this.loader.setController(this);
@@ -29,11 +27,9 @@ public class FXMLScreenHandler {
 		return this.loader;
 	}
 
-	public void setImage(ImageView imv, String path){  //Coincidental Cohesion vi phuong thuc nay khong lien quan den cac phuong thuc con lai cua class
+	public void setImage(ImageView imv, String path){
 		File file = new File(path);
 		Image img = new Image(file.toURI().toString());
 		imv.setImage(img);
-	}
-	protected void setMediaInfo() throws SQLException {
 	}
 }

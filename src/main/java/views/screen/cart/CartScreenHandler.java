@@ -52,11 +52,13 @@ public class CartScreenHandler extends BaseScreenHandler {
 
 	@FXML
 	private Button btnPlaceOrder;
-
+        //content coupling do doi du lieu cua LOGGER
+        // common coupling do day la phuong thuc public nên có the thay the bat cu lúc nào
+        // data coupling do truyen và su dung het du lieu
 	public CartScreenHandler(Stage stage, String screenPath) throws IOException {
-		super(stage, screenPath,null);
+		super(stage, screenPath);
 		try {
-			setupFunctionality();
+			setupFunctionality(); 
 		} catch (IOException ex) {
 			LOGGER.info(ex.getMessage());
 			PopupScreen.error("Error when loading resources.");
@@ -65,7 +67,8 @@ public class CartScreenHandler extends BaseScreenHandler {
 			PopupScreen.error(ex.getMessage());
 		}
 	}
-	@Override
+        // content coupling do doi du lieu cua aimsImage
+        // common coupling do day la phuong thuc public nên có the thay the bat cu lúc nào
 	protected void setupFunctionality() throws Exception {
 		// fix relative image path caused by fxml
 		File file = new File(ViewsConfig.IMAGE_PATH + "/Logo.png");
@@ -90,11 +93,11 @@ public class CartScreenHandler extends BaseScreenHandler {
 
 		});
 	}
-
+        
 	public ViewCartController getBController(){
 		return (ViewCartController) super.getBController();
 	}
-
+        // common coupling do day la phuong thuc public nên có the thay the bat cu lúc nào
 	public void requestToViewCart(BaseScreenHandler prevScreen) throws SQLException {
 		setPreviousScreen(prevScreen);
 		setScreenTitle("Cart Screen");
@@ -102,7 +105,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 		displayCartWithMediaAvailability();
 		show();
 	}
-
+     // common coupling do day la phuong thuc public nên có the thay the bat cu lúc nào
 	public void requestToPlaceOrder() throws SQLException, IOException {
 		try {
 			// create placeOrderController and process the order
@@ -113,7 +116,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 			}
 
 			placeOrderController.placeOrder();
-
+			
 			// display available media
 			displayCartWithMediaAvailability();
 
@@ -139,23 +142,23 @@ public class CartScreenHandler extends BaseScreenHandler {
 		getBController().checkAvailabilityOfProduct();
 		displayCartWithMediaAvailability();
 	}
-
+         
 	void updateCartAmount(){
 		// calculate subtotal and amount
 		int subtotal = getBController().getCartSubtotal();
 		int vat = (int)((ViewsConfig.PERCENT_VAT/100)*subtotal);
 		int amount = subtotal + vat;
-		LOGGER.info("amount" + amount);
+		LOGGER.info("amount" + amount); // content coupling do thay ??i d? li?u c?a LOGGER
 
 		// update subtotal and amount of Cart
-		labelSubtotal.setText(ViewsConfig.getCurrencyFormat(subtotal));
-		labelVAT.setText(ViewsConfig.getCurrencyFormat(vat));
-		labelAmount.setText(ViewsConfig.getCurrencyFormat(amount));
+		labelSubtotal.setText(ViewsConfig.getCurrencyFormat(subtotal)); // content coupling do thay ??i d? li?u c?a labelSubtotal
+		labelVAT.setText(ViewsConfig.getCurrencyFormat(vat)); // content coupling do thay ??i d? li?u c?a labelVAT
+		labelAmount.setText(ViewsConfig.getCurrencyFormat(amount)); // content coupling do thay ??i d? li?u c?a labelAmount
 	}
-
+	//   common coupling do phuong thuc dang  public nên có the thay doi khi nao goi
 	private void displayCartWithMediaAvailability(){
 		// clear all old cartMedia
-		vboxCart.getChildren().clear();
+		vboxCart.getChildren().clear(); // content coupling do do doi du lieu cua vboxCart
 
 		// get list media of cart after check availability
 		List lstMedia = getBController().getListCartMedia();
@@ -166,21 +169,15 @@ public class CartScreenHandler extends BaseScreenHandler {
 				// display the attribute of vboxCart media
 				CartItem cartItem = (CartItem) cm;
 				MediaHandler mediaCartScreen = new MediaHandler(ViewsConfig.CART_MEDIA_PATH, this);
-				mediaCartScreen.setCartItem(cartItem);
+				mediaCartScreen.setCartItem(cartItem);  // content coupling do do doi du lieu cua mediaCartScreen
 
 				// add spinner
-				vboxCart.getChildren().add(mediaCartScreen.getContent());
+				vboxCart.getChildren().add(mediaCartScreen.getContent()); // content coupling do do doi du lieu cua vboxCart
 			}
 			// calculate subtotal and amount
 			updateCartAmount();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	protected void setupData(Object dto) throws Exception {
-		// TODO Auto-generated method stub
-
 	}
 }

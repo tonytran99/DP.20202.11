@@ -1,4 +1,4 @@
-package views.screen.home;
+    package views.screen.home;
 
 import java.io.File;
 import java.io.IOException;
@@ -71,8 +71,17 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     private AuthenticationController authenticationController;
 
     public HomeScreenHandler(Stage stage, String screenPath) throws IOException{
-
-        super(stage, screenPath,null);
+        super(stage, screenPath);
+        try {
+            setupData(null);
+            setupFunctionality();
+        } catch (IOException ex) {
+            LOGGER.info(ex.getMessage());
+            PopupScreen.error("Error when loading resources.");
+        } catch (Exception ex) {
+            LOGGER.info(ex.getMessage());
+            PopupScreen.error(ex.getMessage());
+        }
     }
 
     public Label getNumMediaCartLabel(){
@@ -82,7 +91,9 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
     public HomeController getBController() {
         return (HomeController) super.getBController();
     }
-    @Override
+
+
+    // Stamp coupling : Trueyn doi tuong dto nhung khong su dung
     protected void setupData(Object dto) throws Exception {
         setBController(new HomeController());
         this.authenticationController = new AuthenticationController();
@@ -100,7 +111,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             e.printStackTrace();
         }
     }
-    @Override
+
     protected void setupFunctionality() throws Exception {
 
         aimsImage.setOnMouseClicked(e -> {
@@ -125,6 +136,8 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         addMenuItem(2, "CD", splitMenuBtnSearch);
     }
 
+    
+    // Common Coupling : Tham chieu den SessionInformation.cartInstance static tu module khac
     @Override
     public void show() {
         if (authenticationController.isAnonymousSession()) {
@@ -169,7 +182,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
             return;
         }
     }
-
+    //data coupling khi su dung het du lieu duoc truyen
     private void addMenuItem(int position, String text, MenuButton menuButton){
         MenuItem menuItem = new MenuItem();
         Label label = new Label();
@@ -204,6 +217,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         if (observable instanceof MediaHandler) update((MediaHandler) observable);
     }
 
+    //  Control coupling : mediaHandler lam tham so dieu kien
     private void update(MediaHandler mediaHandler) {
         int requestQuantity = mediaHandler.getRequestQuantity();
         Media media = mediaHandler.getMedia();
