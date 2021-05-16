@@ -61,7 +61,16 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
     // Object stage khong duoc su dung
 	public InvoiceScreenHandler(Stage stage, String screenPath, Invoice invoice) throws IOException {
 		super(stage, screenPath);
-        setupDataAndFunction(null); //  CLEAN CODE
+       try {
+           setupData(response);
+           setupFunctionality();
+       } catch (IOException ex) {
+           LOGGER.info(ex.getMessage());
+           PopupScreen.error("Error when loading resources.");
+       } catch (Exception ex) {
+           LOGGER.info(ex.getMessage());
+           PopupScreen.error(ex.getMessage());
+       }
 	}
 
 	protected void setupData(Object dto) throws Exception {
