@@ -70,7 +70,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
 
     public HomeScreenHandler(Stage stage, String screenPath) throws IOException{
         super(stage, screenPath);
-        setupDataAndFunction(null);
+        setupDataAndFunction(null); // TEMPLATE METHOD
     }
 
     public Label getNumMediaCartLabel(){

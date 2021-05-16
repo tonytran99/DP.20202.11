@@ -24,7 +24,7 @@ public class IntroScreenHandler extends BaseScreenHandler {
     // Temporal cohesion khi cac method dc gom gai theo thoi gian su ly
     public IntroScreenHandler(Stage stage, String screenPath) throws IOException {
         super(stage, screenPath);
-        setupDataAndFunction(null);
+        setupDataAndFunction(null); // TEMPLATE METHOD
     }
 
     // stamp coupling:Trueyn doi tuong dto nhung khong su dung

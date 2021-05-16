@@ -59,7 +59,7 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
     // Stamp coupling : Truyen doi tuong Stage stage nhung khong su dung
 	public InvoiceScreenHandler(Stage stage, String screenPath, Invoice invoice) throws IOException {
 		super(stage, screenPath);
-        setupDataAndFunction(null);
+        setupDataAndFunction(null); // TEMPLATE METHOD
 	}
 
 	protected void setupData(Object dto) throws Exception {

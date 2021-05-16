@@ -67,6 +67,7 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 		this.homeScreenHandler = HomeScreenHandler;
 	}
 
+    // TEMPLATE METHOD
     // function nay se duoc su dung rat nhieu trong cac Class sau khac d
 	public void setupDataAndFunction(Object dto) throws IOException{
 		try {
