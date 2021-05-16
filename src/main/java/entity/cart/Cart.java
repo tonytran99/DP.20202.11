@@ -9,6 +9,7 @@ import entity.media.Media;
 
 //Communicational Cohesion vi cac phuong thuc cung thuc hien tren lstCartItem
 public class Cart {
+    // using SINGLETON
 	private static Cart cart;
     private List<CartItem> lstCartItem;
 
