@@ -4,6 +4,7 @@ import controller.SessionInformation;
 import entity.cart.Cart;
 import entity.cart.CartItem;
 import entity.shipping.DeliveryInfo;
+import entity.shipping.OldCalculator;
 import views.screen.ViewsConfig;
 
 import java.util.ArrayList;
@@ -55,6 +56,7 @@ public class Order {
     
     // data coupling do truy�?n và sử dụng hết dữ liệu
     public void setDeliveryInfo(DeliveryInfo deliveryInfo) {
+        deliveryInfo.setShippingFeeCalculator(new OldCalculator());
         this.deliveryInfo = deliveryInfo;
         this.shippingFees = deliveryInfo.calculateShippingFee(this);
     }

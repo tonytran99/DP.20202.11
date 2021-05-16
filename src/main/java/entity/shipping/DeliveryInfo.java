@@ -10,6 +10,7 @@ public class DeliveryInfo {
     protected String address;
     protected String shippingInstructions;
     protected DistanceCalculator distanceCalculator;
+    protected ShippingFeeCalculator shippingFeeCalculator;
     // data coupling do truy�?n và sử dụng hết dữ liệu
     public DeliveryInfo(String name, String phone, String province, String address, String shippingInstructions, DistanceCalculator distanceCalculator) {
         this.name = name;
@@ -21,10 +22,12 @@ public class DeliveryInfo {
     }
     // stamp coupling do truy�?n biến order và không dùng đến
     public int calculateShippingFee(Order order) {
-        int distance = distanceCalculator.calculateDistance(address, province);
-        return (int) (distance * 1.2);
+        return shippingFeeCalculator.calculate(this, order);
     }
 
+    public void setShippingFeeCalculator(ShippingFeeCalculator shippingFeeCalculator) {
+    	this.shippingFeeCalculator = shippingFeeCalculator;
+    }
     public String getName() {
         return name;
     }
