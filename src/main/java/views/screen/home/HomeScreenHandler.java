@@ -70,12 +70,14 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
 
     public HomeScreenHandler(Stage stage, String screenPath) throws IOException{
         super(stage, screenPath);
-        setupDataAndFunction(null);
+        setupDataAndFunction(null); //  CLEAN CODE
     }
 
-    public Label getNumMediaCartLabel(){
-        return this.numMediaInCart;
-    }
+    // CLEAN CODE :
+    // method getNumMediaCartLabel : dang khong duoc su dung
+//     public Label getNumMediaCartLabel(){
+//         return this.numMediaInCart;
+//     }
 
     public HomeController getBController() {
         return (HomeController) super.getBController();

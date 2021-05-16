@@ -75,17 +75,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 		});
 
 		// on mouse clicked, we start processing place order use case
-		btnPlaceOrder.setOnMouseClicked(e -> {
-			LOGGER.info("Place Order button clicked");
-			try {
-				requestToPlaceOrder();
-			} catch (SQLException | IOException exp) {
-				LOGGER.severe("Cannot place the order, see the logs");
-				exp.printStackTrace();
-				throw new PlaceOrderException(Arrays.toString(exp.getStackTrace()).replaceAll(", ", "\n"));
-			}
-
-		});
+		this.clickBtnPlaceOrder();
 	}
         
 	public ViewCartController getBController(){
@@ -138,7 +128,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 	}
          
 	void updateCartAmount(){
-		// calculate subtotal and amount
+		// calculate subtotal and amogunt
 		int subtotal = getBController().getCartSubtotal();
 		int vat = (int)((ViewsConfig.PERCENT_VAT/100)*subtotal);
 		int amount = subtotal + vat;
@@ -174,4 +164,20 @@ public class CartScreenHandler extends BaseScreenHandler {
 			e.printStackTrace();
 		}
 	}
+
+	// CLEAN CODE :
+    // on mouse clicked, we start processing place order use case
+    // danh dong click nay nen duoc tach ra de code duoc ro rang
+    private void clickBtnPlaceOrder() {
+        btnPlaceOrder.setOnMouseClicked(e -> {
+            LOGGER.info("Place Order button clicked");
+            try {
+                requestToPlaceOrder();
+            } catch (SQLException | IOException exp) {
+                LOGGER.severe("Cannot place the order, see the logs");
+                exp.printStackTrace();
+                throw new PlaceOrderException(Arrays.toString(exp.getStackTrace()).replaceAll(", ", "\n"));
+            }
+        });
+    }
 }
