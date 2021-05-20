@@ -9,7 +9,6 @@ public class DeliveryInfo {
     protected String province;
     protected String address;
     protected String shippingInstructions;
-    protected DistanceCalculator distanceCalculator;
     protected ShippingFeeCalculator shippingFeeCalculator;
     // data coupling do truy�?n và sử dụng hết dữ liệu
     public DeliveryInfo(String name, String phone, String province, String address, String shippingInstructions, DistanceCalculator distanceCalculator) {
@@ -18,7 +17,6 @@ public class DeliveryInfo {
         this.province = province;
         this.address = address;
         this.shippingInstructions = shippingInstructions;
-        this.distanceCalculator = distanceCalculator;
     }
     // stamp coupling do truy�?n biến order và không dùng đến
     public int calculateShippingFee(Order order) {
