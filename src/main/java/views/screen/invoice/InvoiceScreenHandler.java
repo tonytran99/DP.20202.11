@@ -15,8 +15,6 @@ import utils.Utils;
 import views.screen.BaseScreenHandler;
 import views.screen.ViewsConfig;
 import views.screen.payment.PaymentScreenHandler;
-import views.screen.popup.PopupScreen;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Logger;
@@ -57,11 +55,12 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 
 	private Invoice invoice;
 
+    // Stamp coupling : Truyen doi tuong Stage stage nhung khong su dung
 	public InvoiceScreenHandler(Stage stage, String screenPath, Invoice invoice) throws IOException {
-		super(stage, screenPath,null);
-
+		super(stage, screenPath);
+        setupDataAndFunction(null); // TEMPLATE METHOD
 	}
-	@Override
+
 	protected void setupData(Object dto) throws Exception {
 		this.invoice = (Invoice) dto;
 		Order order = invoice.getOrder();
@@ -88,7 +87,7 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 			}
 		});
 	}
-	@Override
+
 	protected void setupFunctionality() throws Exception {
 		return;
 	}

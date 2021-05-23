@@ -2,38 +2,36 @@ package views.screen.intro;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
-import views.screen.popup.PopupScreen;
 
 public class IntroScreenHandler extends BaseScreenHandler {
 
-    private static final Logger LOGGER = Utils.getLogger(IntroScreenHandler.class.getName());
+    private static final Logger LOGGER = Utils.getLogger(IntroScreenHandler.class.getName()); //content coupling do thay doi du lieu cua LOGGER
 
 
     @FXML
     ImageView logo;
-
+    //content coupling do thay doi du lieu cua LOGGER
+    // common coupling do phuong thuc public co the thay  bat cu khi nao goi toi
+    // Temporal cohesion khi cac method dc gom gai theo thoi gian su ly
     public IntroScreenHandler(Stage stage, String screenPath) throws IOException {
-        super(stage, screenPath,null);
-
-
+        super(stage, screenPath);
+        setupDataAndFunction(null); // TEMPLATE METHOD
     }
 
-    @Override
+    // stamp coupling:Trueyn doi tuong dto nhung khong su dung
     protected void setupData(Object dto) throws Exception {
         return;
     }
-    @Override
+    //content coupling do thay doi du lieu cua LOGGER
+    // common coupling do phuong thuc public co the thay  bat cu khi nï¿½o goi toi
     protected void setupFunctionality() throws Exception {
         File file = new File("src/main/resources/assets/images/Logo.png");
         Image image = new Image(file.toURI().toString());

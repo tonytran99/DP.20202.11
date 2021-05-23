@@ -13,7 +13,7 @@ public class ProcessInvoiceException extends AimsException {
 	public ProcessInvoiceException() {
 
 	}
-	// data coupling do truyền sử dụng hết dữ liệu
+	// Data coupling do truyen su dung het du lieu
 	public ProcessInvoiceException(String message) {
 		super(message);
 	}

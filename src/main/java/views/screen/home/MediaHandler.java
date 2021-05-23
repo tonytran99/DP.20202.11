@@ -24,7 +24,7 @@ import utils.Utils;
 import views.screen.FXMLScreenHandler;
 import views.screen.ViewsConfig;
 import views.screen.popup.PopupScreen;
-
+// Clean code - Với yêu cầu thêm 1 media thì khi thay đổi các property trong class Media thì cũng phải thay đổi code hiển thị Media trong class MediaHandler
 public class MediaHandler extends FXMLScreenHandler implements Observable {
 
     @FXML
@@ -65,8 +65,8 @@ public class MediaHandler extends FXMLScreenHandler implements Observable {
     int getRequestQuantity() {
         return spinnerChangeNumber.getValue();
     }
-    @Override
-    protected void setMediaInfo() throws SQLException {
+
+    private void setMediaInfo() throws SQLException {
         // set the cover image of media
         File file = new File(media.getImageURL());
         Image image = new Image(file.toURI().toString());
@@ -78,7 +78,7 @@ public class MediaHandler extends FXMLScreenHandler implements Observable {
         mediaPrice.setText(ViewsConfig.getCurrencyFormat(media.getPrice()));
         mediaAvail.setText(Integer.toString(media.getQuantity()));
         spinnerChangeNumber.setValueFactory(
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1)
+            new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 1)
         );
 
         setImage(mediaImage, media.getImageURL());

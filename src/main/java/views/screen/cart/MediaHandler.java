@@ -1,4 +1,4 @@
-package views.screen.cart;
+    package views.screen.cart;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 import common.exception.MediaUpdateException;
 import common.exception.ViewCartException;
 import controller.SessionInformation;
-import entity.cart.Cart;
 import entity.cart.CartItem;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -59,30 +58,29 @@ public class MediaHandler extends FXMLScreenHandler {
 	private CartItem cartItem;
 	private Spinner<Integer> spinner;
 	private CartScreenHandler cartScreen;
-
 	public MediaHandler(String screenPath, CartScreenHandler cartScreen) throws IOException {
 		super(screenPath);
 		this.cartScreen = cartScreen;
 		hboxMedia.setAlignment(Pos.CENTER);
 	}
-
+	
 	public void setCartItem(CartItem cartItem) {
 		this.cartItem = cartItem;
 		setMediaInfo();
 	}
-	@Override
-	protected void setMediaInfo() {
-		title.setText(cartItem.getMedia().getTitle());
-		price.setText(ViewsConfig.getCurrencyFormat(cartItem.getPrice()));
+        // Communicational cohesion khi cac thanh phan cua method nay dung chung du lieu cartItem
+	private void setMediaInfo() {
+		title.setText(cartItem.getMedia().getTitle()); // content coupling do doi du lieu cuaa title
+		price.setText(ViewsConfig.getCurrencyFormat(cartItem.getPrice())); // content coupling do doi du lieu cua price
 		File file = new File(cartItem.getMedia().getImageURL());
 		Image im = new Image(file.toURI().toString());
-		image.setImage(im);
+		image.setImage(im); 
 		image.setPreserveRatio(false);
 		image.setFitHeight(110);
 		image.setFitWidth(92);
 
 		// add delete button
-		btnDelete.setFont(ViewsConfig.REGULAR_FONT);
+		btnDelete.setFont(ViewsConfig.REGULAR_FONT); // content coupling do thay doi du lieu cua btnDelete
 		btnDelete.setOnMouseClicked(e -> {
 			try {
 				SessionInformation.cart.removeCartMedia(cartItem); // update user cart
@@ -96,11 +94,12 @@ public class MediaHandler extends FXMLScreenHandler {
 
 		initializeSpinner();
 	}
-
+        // content coupling do thay doi du lieu cua btnDelete,LOGGER,cartItem,labelOutOfStock,spinner,price
+        //common coupling do phuong thuc public co the thay the bat cu luc nao duoc goi
 	private void initializeSpinner(){
 		SpinnerValueFactory<Integer> valueFactory = //
-				new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, cartItem.getQuantity());
-		spinner = new Spinner<Integer>(valueFactory);
+			new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, cartItem.getQuantity());
+		spinner = new Spinner<Integer>(valueFactory); 
 		spinner.setOnMouseClicked( e -> {
 			try {
 				int numOfProd = this.spinner.getValue();
@@ -125,7 +124,7 @@ public class MediaHandler extends FXMLScreenHandler {
 			} catch (SQLException e1) {
 				throw new MediaUpdateException(Arrays.toString(e1.getStackTrace()).replaceAll(", ", "\n"));
 			}
-
+			
 		});
 		spinnerFX.setAlignment(Pos.CENTER);
 		spinnerFX.getChildren().add(this.spinner);
