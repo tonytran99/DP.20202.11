@@ -53,16 +53,25 @@ public class CartScreenHandler extends BaseScreenHandler {
 	@FXML
 	private Button btnPlaceOrder;
         //content coupling do doi du lieu cua LOGGER
-        // common coupling do day la phuong thuc public n�n c� the thay the bat cu l�c n�o
-        // data coupling do truyen v� su dung het du lieu
+        // common coupling do day la phuong thuc public nen co the thay the bat cu luc nao
+        // data coupling do truyen va su dung het du lieu
 	public CartScreenHandler(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
-        setupDataAndFunction(null);
+       try {
+           setupData(response);
+           setupFunctionality();
+       } catch (IOException ex) {
+           LOGGER.info(ex.getMessage());
+           PopupScreen.error("Error when loading resources.");
+       } catch (Exception ex) {
+           LOGGER.info(ex.getMessage());
+           PopupScreen.error(ex.getMessage());
+       }
 	}
 
 		// Temporal cohesion: setOnMouseClicked  va setOnMouseClicked doc lap
         // content coupling do doi du lieu cua aimsImage
-        // common coupling do day la phuong thuc public n�n c� the thay the bat cu l�c n�o
+        // common coupling do day la phuong thuc public nen co the thay the bat cu luc nao
 	protected void setupFunctionality() throws Exception {
 		// fix relative image path caused by fxml
 		File file = new File(ViewsConfig.IMAGE_PATH + "/Logo.png");
@@ -75,23 +84,13 @@ public class CartScreenHandler extends BaseScreenHandler {
 		});
 
 		// on mouse clicked, we start processing place order use case
-		btnPlaceOrder.setOnMouseClicked(e -> {
-			LOGGER.info("Place Order button clicked");
-			try {
-				requestToPlaceOrder();
-			} catch (SQLException | IOException exp) {
-				LOGGER.severe("Cannot place the order, see the logs");
-				exp.printStackTrace();
-				throw new PlaceOrderException(Arrays.toString(exp.getStackTrace()).replaceAll(", ", "\n"));
-			}
-
-		});
+		this.clickBtnPlaceOrder();
 	}
         
 	public ViewCartController getBController(){
 		return (ViewCartController) super.getBController();
 	}
-        // common coupling do day la phuong thuc public n�n c� the thay the bat cu l�c n�o
+        // common coupling do day la phuong thuc public nen co the thay the bat cu luc nao
 	public void requestToViewCart(BaseScreenHandler prevScreen) throws SQLException {
 		setPreviousScreen(prevScreen);
 		setScreenTitle("Cart Screen");
@@ -99,7 +98,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 		displayCartWithMediaAvailability();
 		show();
 	}
-     // common coupling do day la phuong thuc public n�n c� the thay the bat cu l�c n�o
+     // common coupling do day la phuong thuc public nen co the thay the bat cu luc nao
 	public void requestToPlaceOrder() throws SQLException, IOException {
 		try {
 			// create placeOrderController and process the order
@@ -138,24 +137,24 @@ public class CartScreenHandler extends BaseScreenHandler {
 	}
          
 	void updateCartAmount(){
-		// calculate subtotal and amount
+		// calculate subtotal and amogunt
 		int subtotal = getBController().getCartSubtotal();
 		int vat = (int)((ViewsConfig.PERCENT_VAT/100)*subtotal);
 		int amount = subtotal + vat;
-		LOGGER.info("amount" + amount); // content coupling do thay ??i d? li?u c?a LOGGER
+		LOGGER.info("amount" + amount); // content coupling do thay doi du lieu cua LOGGER
 
 		// update subtotal and amount of Cart
 		labelSubtotal.setText(ViewsConfig.getCurrencyFormat(subtotal)); // content coupling do thay ??i d? li?u c?a labelSubtotal
 		labelVAT.setText(ViewsConfig.getCurrencyFormat(vat)); // content coupling do thay ??i d? li?u c?a labelVAT
 		labelAmount.setText(ViewsConfig.getCurrencyFormat(amount)); // content coupling do thay ??i d? li?u c?a labelAmount
 	}
-	//   common coupling do phuong thuc dang  public n�n c� the thay doi khi nao goi
+	//   common coupling do phuong thuc dang  public nen co the thay doi khi nao goi
 	private void displayCartWithMediaAvailability(){
 		// clear all old cartMedia
 		vboxCart.getChildren().clear(); // content coupling do do doi du lieu cua vboxCart
 
 		// get list media of cart after check availability
-		List lstMedia = getBController().getListCartMedia();
+		List<?> lstMedia = getBController().getListCartMedia();
 
 		try {
 			for (Object cm : lstMedia) {
@@ -174,4 +173,20 @@ public class CartScreenHandler extends BaseScreenHandler {
 			e.printStackTrace();
 		}
 	}
+
+	// CLEAN CODE :
+    // on mouse clicked, we start processing place order use case
+    // danh dong click nay nen duoc tach ra de code duoc ro rang
+    private void clickBtnPlaceOrder() {
+        btnPlaceOrder.setOnMouseClicked(e -> {
+            LOGGER.info("Place Order button clicked");
+            try {
+                requestToPlaceOrder();
+            } catch (SQLException | IOException exp) {
+                LOGGER.severe("Cannot place the order, see the logs");
+                exp.printStackTrace();
+                throw new PlaceOrderException(Arrays.toString(exp.getStackTrace()).replaceAll(", ", "\n"));
+            }
+        });
+    }
 }

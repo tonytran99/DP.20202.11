@@ -5,7 +5,12 @@ package common.exception;
  */
 public class ExpiredSessionException extends AimsException {
 
-    public ExpiredSessionException() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public ExpiredSessionException() {
         super("ERROR: Your session has expired. Please login again!");
     }
 }

@@ -7,7 +7,7 @@ public class OrderItem {
     private Media media;
     private int price;
     private int quantity;
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // Data coupling do truyen va su dung het du lieu
     public OrderItem(Media media, int quantity, int price) {
         this.media = media;
         this.quantity = quantity;
@@ -26,7 +26,7 @@ public class OrderItem {
     public Media getMedia() {
         return this.media;
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // Data coupling do truyen va su dung het du lieu
     public void setMedia(Media media) {
         this.media = media;
     }
@@ -34,7 +34,7 @@ public class OrderItem {
     public int getQuantity() {
         return this.quantity;
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // Data coupling do truyen va su dung het du lieu
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
@@ -42,7 +42,7 @@ public class OrderItem {
     public int getPrice() {
         return this.price;
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // Data coupling do truyen va su dung het du lieu
     public void setPrice(int price) {
         this.price = price;
     }

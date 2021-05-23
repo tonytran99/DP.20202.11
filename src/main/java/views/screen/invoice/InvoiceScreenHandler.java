@@ -15,8 +15,6 @@ import utils.Utils;
 import views.screen.BaseScreenHandler;
 import views.screen.ViewsConfig;
 import views.screen.payment.PaymentScreenHandler;
-import views.screen.popup.PopupScreen;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Logger;
@@ -59,9 +57,20 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 	private Invoice invoice;
 
     // Stamp coupling : Truyen doi tuong Stage stage nhung khong su dung
+    // CLEAN CODE :
+    // Object stage khong duoc su dung
 	public InvoiceScreenHandler(Stage stage, String screenPath, Invoice invoice) throws IOException {
 		super(stage, screenPath);
-        setupDataAndFunction(null);
+       try {
+           setupData(response);
+           setupFunctionality();
+       } catch (IOException ex) {
+           LOGGER.info(ex.getMessage());
+           PopupScreen.error("Error when loading resources.");
+       } catch (Exception ex) {
+           LOGGER.info(ex.getMessage());
+           PopupScreen.error(ex.getMessage());
+       }
 	}
 
 	protected void setupData(Object dto) throws Exception {

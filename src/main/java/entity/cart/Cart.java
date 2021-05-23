@@ -10,7 +10,7 @@ import entity.media.Media;
 //Communicational Cohesion vi cac phuong thuc cung thuc hien tren lstCartItem
 public class Cart {
 	private static Cart cart;
-    private List<CartItem> lstCartItem;// cÃ¯Â¿Â½c cart trong gi? hÃ¯Â¿Â½ng
+    private List<CartItem> lstCartItem;
 
     public static Cart getInstance() {
     	if(cart == null) cart = new Cart();
@@ -22,11 +22,11 @@ public class Cart {
     }
 
 
-    // data coupling do truyá»?n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    // Data coupling do truyen va su dung het du lieu
     public void addCartMedia(CartItem cm){
         lstCartItem.add(cm);
     }
-    // data coupling do truyá»?n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    // Data coupling do truyen va su dung het du lieu
     public void removeCartMedia(CartItem cm){
         lstCartItem.remove(cm);
     }
@@ -52,7 +52,7 @@ public class Cart {
         int total = 0;
         for (Object obj : lstCartItem) {
             CartItem cm = (CartItem) obj;
-            total += cm.getPrice()*cm.getQuantity();
+            total += cm.calPriceOneProduct(cm.getPrice(), cm.getQuantity());
         }
         return total;
     }
@@ -67,10 +67,12 @@ public class Cart {
             }
         }
     }
+
     // stamp coupling do chÃ¡Â»â€° dÃƒÂ¹ng phÃ†Â°Ã†Â¡ng thÃ¡Â»Â©c getId cÃ¡Â»Â§a Media 
-    public CartItem checkMediaInCart(Media media){
+    public CartItem checkMediaInCart(int idMedia){
+
         for (CartItem cartItem : lstCartItem) {
-            if (cartItem.getMedia().getId() == media.getId()) return cartItem;
+            if (cartItem.getMedia().getId() == idMedia) return cartItem;
         }
         return null;
     }

@@ -66,22 +66,4 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 	public void setHomeScreenHandler(HomeScreenHandler HomeScreenHandler) {
 		this.homeScreenHandler = HomeScreenHandler;
 	}
-
-    // function nay se duoc su dung rat nhieu trong cac Class sau khac d
-	public void setupDataAndFunction(Object dto) throws IOException{
-		try {
-			setupData(dto);
-			setupFunctionality();
-		} catch (IOException ex) {
-			LOGGER.info(ex.getMessage());
-			PopupScreen.error("Error when loading resources.");
-		} catch (Exception ex) {
-			LOGGER.info(ex.getMessage());
-			PopupScreen.error(ex.getMessage());
-		}
-	}
-
-	protected void setupData(Object dto) throws Exception {
-	}
-
 }
