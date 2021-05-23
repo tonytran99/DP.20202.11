@@ -59,8 +59,6 @@ public class CartScreenHandler extends BaseScreenHandler {
 		super(stage, screenPath);
         setupDataAndFunction(null);
 	}
-
-		// Temporal cohesion: setOnMouseClicked  va setOnMouseClicked doc lap
         // content coupling do doi du lieu cua aimsImage
         // common coupling do day la phuong thuc public nen co the thay the bat cu luc nao
 	protected void setupFunctionality() throws Exception {

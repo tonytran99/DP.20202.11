@@ -22,7 +22,6 @@ import java.util.regex.Pattern;
 //SOLID: vi pham nguyen ly OCP OCP do phuong thuc processDeliveryInfo
 // Logical cohension do co nhieu ham tuong tu nhau 
 
-// logical cohesion, cac phuong thuc validate nhu validateDeliveryInfo , validatePhoneNumber, validateName, validateAddress can duoc tach rieng vao mot lop
 public class PlaceOrderController extends BaseController {
 
     /**

@@ -109,7 +109,6 @@ public class InterbankPayloadConverter {
         return response;
     }
 
-    //  concidental cohesion : funcyion getToday khong tach biet voi class => cho vao lop Utils => chung
     /**
      * Return a {@link String String} that represents the current time in the format of yyyy-MM-dd HH:mm:ss.
      *

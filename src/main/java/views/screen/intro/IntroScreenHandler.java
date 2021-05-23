@@ -12,7 +12,6 @@ import utils.Utils;
 import views.screen.BaseScreenHandler;
 
 public class IntroScreenHandler extends BaseScreenHandler {
-	// singleton design pattern
 
     private static final Logger LOGGER = Utils.getLogger(IntroScreenHandler.class.getName()); //content coupling do thay doi du lieu cua LOGGER
 
@@ -32,7 +31,7 @@ public class IntroScreenHandler extends BaseScreenHandler {
         return;
     }
     //content coupling do thay doi du lieu cua LOGGER
-    // common coupling do phuong thuc public co the thay  bat cu khi n�o goi toi
+    // common coupling do phuong thuc public co the thay  bat cu khi nï¿½o goi toi
     protected void setupFunctionality() throws Exception {
         File file = new File("src/main/resources/assets/images/Logo.png");
         Image image = new Image(file.toURI().toString());
