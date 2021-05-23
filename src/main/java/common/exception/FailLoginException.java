@@ -5,7 +5,12 @@ package common.exception;
  */
 public class FailLoginException extends AimsException {
 
-    public FailLoginException() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public FailLoginException() {
         super("ERROR: Fail to Login. Please try again!");
     }
 }

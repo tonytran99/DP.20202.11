@@ -15,13 +15,12 @@ import utils.Utils;
 import views.screen.BaseScreenHandler;
 import views.screen.ViewsConfig;
 import views.screen.payment.PaymentScreenHandler;
-import views.screen.popup.PopupScreen;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
 public class InvoiceScreenHandler extends BaseScreenHandler {
+	// singleton design pattern
 
 	private static Logger LOGGER = Utils.getLogger(InvoiceScreenHandler.class.getName());
 
@@ -60,16 +59,7 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
     // Stamp coupling : Truyen doi tuong Stage stage nhung khong su dung
 	public InvoiceScreenHandler(Stage stage, String screenPath, Invoice invoice) throws IOException {
 		super(stage, screenPath);
-		try {
-			setupData(invoice);
-			setupFunctionality();
-		} catch (IOException ex) {
-			LOGGER.info(ex.getMessage());
-			PopupScreen.error("Error when loading resources.");
-		} catch (Exception ex) {
-			LOGGER.info(ex.getMessage());
-			PopupScreen.error(ex.getMessage());
-		}
+        setupDataAndFunction(null);
 	}
 
 	protected void setupData(Object dto) throws Exception {

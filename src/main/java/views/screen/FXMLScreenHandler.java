@@ -27,6 +27,7 @@ public class FXMLScreenHandler {
 		return this.loader;
 	}
 
+	// concidental cohension : function setImage nen de trong class Utils
 	public void setImage(ImageView imv, String path){
 		File file = new File(path);
 		Image img = new Image(file.toURI().toString());

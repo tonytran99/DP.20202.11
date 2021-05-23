@@ -18,7 +18,7 @@ public class HomeController extends BaseController {
      * @throws SQLException
      */
 	
-    public static List getAllMedia() throws SQLException{
+    public static List<?> getAllMedia() throws SQLException{
     	// common coupling do sử dụng biến toàn cục MediaDao
         return new MediaDAO().getAllMedia();
     }

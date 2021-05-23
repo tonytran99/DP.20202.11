@@ -17,10 +17,10 @@ import java.util.List;
 //Fuctional cohension do cac phuong thuc lien quan ho tro thao tac DAO
 public class MediaDAO {
 
-    public List getAllMedia() throws SQLException {
+    public List<Object> getAllMedia() throws SQLException {
         Statement stm = AIMSDB.getConnection().createStatement();
         ResultSet res = stm.executeQuery("select * from Media");
-        ArrayList medium = new ArrayList<>();
+        ArrayList<Object> medium = new ArrayList<>();
         while (res.next()) {
             Media media = new Media(
                     res.getInt("id"),
@@ -34,9 +34,9 @@ public class MediaDAO {
         }
         return medium;
     }
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    // data coupling do truyen va su dung het du lieu
     public Media getMediaById(int id) throws SQLException {
-        String sql = "SELECT * FROM Media ;";
+        String sql = "SELECT * FROM Media where id = " + id;
         Statement stm = AIMSDB.getConnection().createStatement();
         ResultSet res = stm.executeQuery(sql);
 
@@ -52,8 +52,8 @@ public class MediaDAO {
         }
         return null;
     }
-    // stamp coupling do truyá»�n vÃ  khÃ´ng sá»­ dá»¥ng háº¿t dá»¯ liá»‡u (tbname)
-    // content coupling do Ä‘Ã£ thay Ä‘á»•i giÃ¡ trá»‹ cá»§a Ä‘á»‘i tÆ°á»£ng khÃ¡c vÃ  Ä‘á»ƒ á»Ÿ dáº¡ng public lÃ m cÃ³ thá»ƒ thay Ä‘á»•i giÃ¡ trá»‹ táº¡i báº¥t cá»© Ä‘Ã¢u khÃ´ng kiá»ƒm soÃ¡t Ä‘Æ°á»£c
+    // stamp coupling
+    // content coupling
     public void updateMediaFieldById(String tbname, int id, String field, Object value) throws SQLException {
         Statement stm = AIMSDB.getConnection().createStatement();
         if (value instanceof String){
