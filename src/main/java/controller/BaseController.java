@@ -3,7 +3,6 @@ package controller;
 import java.util.List;
 
 import entity.cart.CartItem;
-import entity.media.Media;
 
 /**
  * This class is the base controller for our AIMS project
@@ -17,9 +16,9 @@ public class BaseController {
      * @param media
      * @return CartMedia or null
      */
-    // data coupling do truyá»�n vÃ  sá»­ dá»¥ng háº¿t dá»¯ liá»‡u
+    // data coupling do truyen va su dung het du lieu
     public CartItem checkMediaInCart(int idMedia){
-    	// common coupling do sá»­ dá»¥ng biáº¿n toÃ n cá»¥c SessionIformation
+    	// common coupling do su dung bien toan cuc SessionIformation
         return SessionInformation.cart.checkMediaInCart(idMedia);
 
     }

@@ -8,7 +8,6 @@ import common.exception.InvalidCardException;
 import common.exception.PaymentException;
 import common.exception.UnrecognizedException;
 import entity.payment.CreditCard;
-import entity.payment.PaymentTransaction;
 import subsystem.InterbankInterface;
 import subsystem.InterbankSubsystem;
 
@@ -98,7 +97,7 @@ public class PaymentController extends BaseController {
 
 
 			this.interbankInterface = new InterbankSubsystem();
-			PaymentTransaction transaction = interbankInterface.payOrder(creditCard, amount, contents);
+			interbankInterface.payOrder(creditCard, amount, contents);
 
 
 			result.put("RESULT", "PAYMENT SUCCESSFUL!");

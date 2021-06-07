@@ -2,17 +2,13 @@ package views.screen;
 
 import java.io.IOException;
 import java.util.Hashtable;
-import java.util.List;
 import java.util.logging.Logger;
 
-import controller.AuthenticationController;
 import controller.BaseController;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import utils.Utils;
 import views.screen.home.HomeScreenHandler;
-import views.screen.popup.PopupScreen;
 
 public abstract class BaseScreenHandler extends FXMLScreenHandler {
 
@@ -59,7 +55,7 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 		return this.bController;
 	}
 
-	public void forward(Hashtable messages) {
+	public void forward(Hashtable<String, String> messages) {
 		this.messages = messages;
 	}
 
