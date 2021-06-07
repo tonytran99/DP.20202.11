@@ -17,14 +17,15 @@ public class DeliveryInfo {
         this.province = province;
         this.address = address;
         this.shippingInstructions = shippingInstructions;
-        this.distanceCalculator = distanceCalculator;
     }
     // stamp coupling do truyen ca bien Order
     public int calculateShippingFee(Order order) {
-        int distance = distanceCalculator.calculateDistance(address, province);
-        return (int) (distance * 1.2);
+        return shippingFeeCalculator.calculate(this, order);
     }
 
+    public void setShippingFeeCalculator(ShippingFeeCalculator shippingFeeCalculator) {
+    	this.shippingFeeCalculator = shippingFeeCalculator;
+    }
     public String getName() {
         return name;
     }
