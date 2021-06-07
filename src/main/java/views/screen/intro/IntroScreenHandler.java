@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import utils.Utils;
 import views.screen.BaseScreenHandler;
+import views.screen.popup.PopupScreen;
 
 public class IntroScreenHandler extends BaseScreenHandler {
 	// singleton design pattern
@@ -24,7 +25,16 @@ public class IntroScreenHandler extends BaseScreenHandler {
     // Temporal cohesion khi cac method dc gom gai theo thoi gian su ly
     public IntroScreenHandler(Stage stage, String screenPath) throws IOException {
         super(stage, screenPath);
-        setupDataAndFunction(null);
+        try {
+            setupData(null);
+            setupFunctionality();
+        } catch (IOException ex) {
+            LOGGER.info(ex.getMessage());
+            PopupScreen.error("Error when loading resources.");
+        } catch (Exception ex) {
+            LOGGER.info(ex.getMessage());
+            PopupScreen.error(ex.getMessage());
+        }
     }
 
     // stamp coupling:Trueyn doi tuong dto nhung khong su dung
