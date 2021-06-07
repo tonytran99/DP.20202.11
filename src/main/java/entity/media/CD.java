@@ -1,12 +1,10 @@
 package entity.media;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.List;
 
 public class CD extends Media {
-	// commom và content coupling do để dữ liệu ở dạng public đẫn đến có thể lấy và thay đổi bất cứ lúc nào
+	// commom va content coupling do thuoc tinh khong de private
     String artist;
     String recordLabel;
     String musicType;
@@ -15,7 +13,7 @@ public class CD extends Media {
     public CD() throws SQLException{
 
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // Data coupling do truyen va su dung het du lieu
     public CD(int id, String title, String category, int price, int quantity, String type, String artist,
             String recordLabel, String musicType, Date releasedDate) throws SQLException{
         super(id, title, category, price, quantity, type);
@@ -28,7 +26,7 @@ public class CD extends Media {
     public String getArtist() {
         return this.artist;
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // Data coupling do truyen va su dung het du lieu
     public CD setArtist(String artist) {
         this.artist = artist;
         return this;
@@ -37,7 +35,7 @@ public class CD extends Media {
     public String getRecordLabel() {
         return this.recordLabel;
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // Data coupling do truyen va su dung het du lieu
     public CD setRecordLabel(String recordLabel) {
         this.recordLabel = recordLabel;
         return this;
@@ -46,7 +44,7 @@ public class CD extends Media {
     public String getMusicType() {
         return this.musicType;
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    // Data coupling do truyen va su dung het du lieu
     public CD setMusicType(String musicType) {
         this.musicType = musicType;
         return this;
@@ -55,7 +53,7 @@ public class CD extends Media {
     public Date getReleasedDate() {
         return this.releasedDate;
     }
-    // data coupling do truyền và sử dụng hết dữ liệu
+    //Data coupling do truyen va su dung het du lieu
     public CD setReleasedDate(Date releasedDate) {
         this.releasedDate = releasedDate;
         return this;

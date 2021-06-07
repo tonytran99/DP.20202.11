@@ -14,10 +14,10 @@ import java.util.List;
 public class Order {
 
     private int shippingFees;
-    private int subtotal; // tổng giá ti�?n của sản phẩm
+    private int subtotal; // tong gia tien cua san pham
     private int tax;// 
-    private List orderMediaList;
-    //  Nên để ở private
+    private List<OrderItem> orderMediaList;
+    // Nen de private
     protected DeliveryInfo deliveryInfo;
     public Order() {
         this.shippingFees = 0;
@@ -25,7 +25,7 @@ public class Order {
         this.tax = 0;
     }
     
-    // stamp coupling do truy�?n cart ở dạng phức và không dùng hết
+    // stamp coupling do truyen cart o dang phuc hop khong can thiet
     
     public Order(Cart cart) {
         List<OrderItem> orderItems = new ArrayList<>();
@@ -41,7 +41,7 @@ public class Order {
         this.tax = (int) (ViewsConfig.PERCENT_VAT/100) * subtotal;
     }
 
-    public List getListOrderMedia() {
+    public List<OrderItem> getListOrderMedia() {
         return this.orderMediaList;
     }
 
@@ -54,14 +54,14 @@ public class Order {
         return deliveryInfo;
     }
     
-    // data coupling do truy�?n và sử dụng hết dữ liệu
+    // Data coupling do truyen va su dung het du lieu
     public void setDeliveryInfo(DeliveryInfo deliveryInfo) {
         deliveryInfo.setShippingFeeCalculator(new OldCalculator());
         this.deliveryInfo = deliveryInfo;
         this.shippingFees = deliveryInfo.calculateShippingFee(this);
     }
 
-    public List getOrderMediaList() {
+    public List<OrderItem> getOrderMediaList() {
         return orderMediaList;
     }
 
