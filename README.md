@@ -1,45 +1,20 @@
-#  An Internet Media Store
-<p align="center">
-  <img src="assets/images/aims_cover_image.png" />
-</p>
+# Thông tin các thành viên
+Ph?m ?ình Th?ng – 20173370
+Nguy?n Quang T?o – 20173356
+Tr?n ?ình Th?ng – 20173363
+Tr?nh V?n Th?ng - 20183630
+ 
 
-## Getting Started
+# ?óng góp c?a các thành viên
+Ph?m ?ình Th?ng: Tìm các l?i liên quan ??n Clear Name, Clean Class.
+C?i ti?n thi?t k? ?áp ?ng các yêu c?u s? 4,6,7
 
-Welcome to the AIMS project. Here is a guideline to help you get started.
+Nguy?n Quang T?o: Tìm các l?i liên quan ??n Clean Fucntion, SOLID
+C?i ti?n yêu c?u s? 5, c?i ti?n vi ph?m SRP
 
-## Folder Structure
+Tr?n ?ình Th?ng: Tìm module t??ng ?ng v?i các c?p ?? Cohesion
 
-The workspace contains the following folders, where:
+Tr?nh V?n Th?ng: Tìm module t??ng ?ng v?i các c?p ?? Coupling
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-- `test`: the folder for testing purpose
+# Link of presentation video
 
-## Dependency Management
-### Working with Eclipse
-Import the root directory of this repository after cloning under `Eclipse` -> `Open Projects from File System...` or by using EGit.
-
-### SQLite
-Import `sqlite-jdbc-3.7.2.jar` in `lib` under `Eclipse` -> `Project` -> `Properties` -> `Java Build Path` -> `Classpath` -> `Add JARs...`.
-
-
-### JUnit
-Import `JUnit5` library under `Eclipse` -> `Project` -> `Properties` -> `Java Build Path` -> `Modulepath` -> `Add Library...` -> `JUnit` -> `Next`.
-
-### JavaFX
-**Note:** At first, please try to run the project once, and then follow these steps.
-1. Create a new `User Library` under `Eclipse` -> `Window` -> `Preferences` -> `Java` -> `Build Path` -> `User Libraries` -> `New`
-2. Name it anything you want, e.g., `JavaFX15`, and include the ***jars*** under either the `lib/linux/javafx-sdk-15` directory for Linux distro or the `lib/win/javafx-sdk-15` directory for Windows in the project.
-3. Include the library, e.g., `JavaFX15`, into the classpath.
-
-### Add VM arguments
-Click on `Run` -> `Run Configurations...`  -> `Java Application`, create a new launch configuration for your project and add these VM arguments:
-- For Linux distro: 
-> `--module-path lib/linux/javafx-sdk-15 --add-modules javafx.controls,javafx.fxml`
-- For Windows:
-> `--module-path lib/win/javafx-sdk-15 --add-modules javafx.controls,javafx.fxml`
-
-## Author
-- nguyenlm - Software Engeneering Student - k61
-- manhvd   - Software Engeneering Student - k61
-- hieudm   - ICT - k61
