@@ -67,11 +67,13 @@ public class MediaHandler extends FXMLScreenHandler implements Observable {
     }
 
     private void setMediaInfo() throws SQLException {
+        final int HEIGHT_MEDIA_INFO = 160;
+        final int WIDTH_MEDIA_INFO = 152;
         // set the cover image of media
         File file = new File(media.getImageURL());
         Image image = new Image(file.toURI().toString());
-        mediaImage.setFitHeight(160);
-        mediaImage.setFitWidth(152);
+        mediaImage.setFitHeight(HEIGHT_MEDIA_INFO);
+        mediaImage.setFitWidth(WIDTH_MEDIA_INFO);
         mediaImage.setImage(image);
 
         mediaTitle.setText(media.getTitle());

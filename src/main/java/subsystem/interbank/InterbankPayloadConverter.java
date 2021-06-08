@@ -1,6 +1,7 @@
 package subsystem.interbank;
 
 import common.exception.*;
+import entity.payment.CardStrategy;
 import entity.payment.CreditCard;
 import entity.payment.PaymentTransaction;
 import utils.MyMap;
@@ -22,11 +23,11 @@ public class InterbankPayloadConverter {
      * @param contents
      * @return
      */
-    String convertToRequestPayload(CreditCard card, int amount, String contents) {
+    String convertToRequestPayload(CardStrategy cardStrategy, int amount, String contents) {
         Map<String, Object> transaction = new MyMap();
 
         try {
-            transaction.putAll(MyMap.toMyMap(card));
+            transaction.putAll(MyMap.toMyMap(cardStrategy));
         } catch (IllegalArgumentException | IllegalAccessException e) {
             // TODO Auto-generated catch block
             throw new InvalidCardException();

@@ -12,6 +12,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.*;
 
 
 
@@ -31,17 +32,26 @@ public class AuthenticationController extends BaseController {
         }
     }
     public User getMainUser() throws ExpiredSessionException {
+
     	// common coupling do truy cập trực tiếp và0 các dữ liệu của sessionInformation
-        if (SessionInformation.mainUser == null || SessionInformation.expiredTime == null || SessionInformation.expiredTime.isBefore(LocalDateTime.now())) {
+        if (isLogin()) {
             logout();
             throw new ExpiredSessionException();
          // common coupling do truy cập trực tiếp và0 các dữ liệu của sessionInformation
         } else return SessionInformation.mainUser.cloneInformation();
     }
 
+    public boolean isLogin(){
+        boolean isNullMainUser = SessionInformation.mainUser == null;
+        boolean isNullExpiredTime = SessionInformation.expiredTime == null;
+        boolean isExpiredTime = SessionInformation.expiredTime.isBefore(LocalDateTime.now());
+        return isNullMainUser || isNullExpiredTime || isExpiredTime;
+    }
+
+
     public void login(String email, String password) throws Exception {
         try {
-            User user = new UserDAO().authenticate(email, md5(password));
+            User user = new UserDAO().authenticate(email, utils.Encryption.md5(password));
             if (Objects.isNull(user)) throw new FailLoginException();
             // common coupling do truy cập trực tiếp và0 các dữ liệu của sessionInformation
             SessionInformation.mainUser = user;									// content coupling do thay đổi dữ liệu của SessionInformation
@@ -65,22 +75,22 @@ public class AuthenticationController extends BaseController {
      * @return cipher text as {@link String String}.
      */
     
-    private String md5(String message) {
-        String digest = null;
-        try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] hash = md.digest(message.getBytes(StandardCharsets.UTF_8));
-            // converting byte array to Hexadecimal String
-            StringBuilder sb = new StringBuilder(2 * hash.length);
-            for (byte b : hash) {
-                sb.append(String.format("%02x", b & 0xff));
-            }
-            digest = sb.toString();
-        } catch (NoSuchAlgorithmException ex) {
-            Utils.getLogger(Utils.class.getName());
-            digest = "";
-        }
-        return digest;
-    }
+//    private String md5(String message) {
+//        String digest = null;
+//        try {
+//            MessageDigest md = MessageDigest.getInstance("MD5");
+//            byte[] hash = md.digest(message.getBytes(StandardCharsets.UTF_8));
+//            // converting byte array to Hexadecimal String
+//            StringBuilder sb = new StringBuilder(2 * hash.length);
+//            for (byte b : hash) {
+//                sb.append(String.format("%02x", b & 0xff));
+//            }
+//            digest = sb.toString();
+//        } catch (NoSuchAlgorithmException ex) {
+//            Utils.getLogger(Utils.class.getName());
+//            digest = "";
+//        }
+//        return digest;
+//    }
 
 }

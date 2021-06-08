@@ -1,13 +1,13 @@
 package subsystem;
 
-import entity.payment.CreditCard;
+import entity.payment.CardStrategy;
 import entity.payment.PaymentTransaction;
 import subsystem.interbank.InterbankSubsystemController;
 
 /***
  * The {@code InterbankSubsystem} class is used to communicate with the
  * Interbank to make transaction.
- * 
+ *
  * @author hieud
  *
  */
@@ -30,19 +30,15 @@ public class InterbankSubsystem implements InterbankInterface {
 	 * @see InterbankInterface#payOrder(CreditCard, int,
 	 *      String)
 	 */
-    // Stamp coupling : Truyen doi tuong CreditCard card nhung khong su dung
-	public PaymentTransaction payOrder(CreditCard card, int amount, String contents) {
-		PaymentTransaction transaction = ctrl.payOrder(card, amount, contents);
-		return transaction;
+	public PaymentTransaction payOrder(CardStrategy cardStrategy, int amount, String contents) {
+		return ctrl.payOrder(cardStrategy, amount, contents);  //Move an expression inline
 	}
 
 	/**
 	 * @see InterbankInterface#refund(CreditCard, int,
 	 *      String)
 	 */
-    // Stamp coupling : Truyen doi tuong CreditCard card nhung khong su dung
-	public PaymentTransaction refund(CreditCard card, int amount, String contents) {
-		PaymentTransaction transaction = ctrl.refund(card, amount, contents);
-		return transaction;
+	public PaymentTransaction refund(CardStrategy cardStrategy, int amount, String contents) {
+		return ctrl.refund(cardStrategy, amount, contents);   //Move an expression inline
 	}
 }

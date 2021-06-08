@@ -71,14 +71,16 @@ public class MediaHandler extends FXMLScreenHandler {
 	}
         // Communicational cohesion khi cac thanh phan cua method nay dung chung du lieu cartItem
 	private void setMediaInfo() {
+		final int HEIGHT_MEDIA_INFO = 110;
+		final int WIDTH_MEDIA_INFO = 92;
 		title.setText(cartItem.getMedia().getTitle()); // content coupling do doi du lieu cuaa title
 		price.setText(ViewsConfig.getCurrencyFormat(cartItem.getPrice())); // content coupling do doi du lieu cua price
 		File file = new File(cartItem.getMedia().getImageURL());
 		Image im = new Image(file.toURI().toString());
 		image.setImage(im); 
 		image.setPreserveRatio(false);
-		image.setFitHeight(110);
-		image.setFitWidth(92);
+		image.setFitHeight(HEIGHT_MEDIA_INFO);
+		image.setFitWidth(WIDTH_MEDIA_INFO);
 
 		// add delete button
 		btnDelete.setFont(ViewsConfig.REGULAR_FONT); // content coupling do thay doi du lieu cua btnDelete
