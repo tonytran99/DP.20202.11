@@ -3,14 +3,13 @@ package entity.shipping;
 import entity.order.Order;
 import org.example.DistanceCalculator;
 public class DeliveryInfo {
-	// Content and common coupling do co the truy cap boi cac lop con ben ngoai va thay doi gia tri qua ham get set
+    // Content and common coupling do co the truy cap boi cac lop con ben ngoai va thay doi gia tri qua ham get set
     protected String name;
     protected String phone;
     protected String province;
     protected String address;
     protected String shippingInstructions;
     protected DistanceCalculator distanceCalculator;
-    final double CACULATE_SHIPPING_FEE = 1.2;
     // Data coupling do truyen va su dung het du lieu
     public DeliveryInfo(String name, String phone, String province, String address, String shippingInstructions, DistanceCalculator distanceCalculator) {
         this.name = name;
@@ -18,15 +17,15 @@ public class DeliveryInfo {
         this.province = province;
         this.address = address;
         this.shippingInstructions = shippingInstructions;
-        this.distanceCalculator = distanceCalculator;
     }
-
     // stamp coupling do truyen ca bien Order
     public int calculateShippingFee(Order order) {
-        int distance = distanceCalculator.calculateDistance(address, province);
-        return (int) (distance * CACULATE_SHIPPING_FEE);
+        return shippingFeeCalculator.calculate(this, order);
     }
 
+    public void setShippingFeeCalculator(ShippingFeeCalculator shippingFeeCalculator) {
+        this.shippingFeeCalculator = shippingFeeCalculator;
+    }
     public String getName() {
         return name;
     }

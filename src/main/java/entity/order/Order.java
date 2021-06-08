@@ -4,6 +4,7 @@ import controller.SessionInformation;
 import entity.cart.Cart;
 import entity.cart.CartItem;
 import entity.shipping.DeliveryInfo;
+import entity.shipping.OldCalculator;
 import views.screen.ViewsConfig;
 
 import java.util.ArrayList;
@@ -23,9 +24,9 @@ public class Order {
         this.subtotal = 0;
         this.tax = 0;
     }
-    
+
     // stamp coupling do truyen cart o dang phuc hop khong can thiet
-    
+
     public Order(Cart cart) {
         List<OrderItem> orderItems = new ArrayList<>();
         for (Object object : SessionInformation.cart.getListMedia()) {
@@ -52,9 +53,10 @@ public class Order {
     public DeliveryInfo getDeliveryInfo() {
         return deliveryInfo;
     }
-    
+
     // Data coupling do truyen va su dung het du lieu
     public void setDeliveryInfo(DeliveryInfo deliveryInfo) {
+        deliveryInfo.setShippingFeeCalculator(new OldCalculator());
         this.deliveryInfo = deliveryInfo;
         this.shippingFees = deliveryInfo.calculateShippingFee(this);
     }
