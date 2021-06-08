@@ -13,7 +13,7 @@ import views.screen.BaseScreenHandler;
 import views.screen.popup.PopupScreen;
 
 public class IntroScreenHandler extends BaseScreenHandler {
-	// singleton design pattern
+    // singleton design pattern
 
     private static final Logger LOGGER = Utils.getLogger(IntroScreenHandler.class.getName()); //content coupling do thay doi du lieu cua LOGGER
 

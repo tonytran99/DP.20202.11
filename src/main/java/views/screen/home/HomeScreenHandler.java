@@ -1,4 +1,4 @@
-    package views.screen.home;
+package views.screen.home;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,7 +33,7 @@ import views.screen.popup.PopupScreen;
 
 
 public class HomeScreenHandler extends BaseScreenHandler implements Observer {
-	// singleton design pattern
+    // singleton design pattern
 
     public static Logger LOGGER = Utils.getLogger(HomeScreenHandler.class.getName());
 
@@ -134,7 +134,7 @@ public class HomeScreenHandler extends BaseScreenHandler implements Observer {
         addMenuItem(2, "CD", splitMenuBtnSearch);
     }
 
-    
+
     // Common Coupling : Tham chieu den SessionInformation.cartInstance static tu module khac
     @Override
     public void show() {

@@ -58,7 +58,7 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 
 	private Invoice invoice;
 
-    // Stamp coupling : Truyen doi tuong Stage stage nhung khong su dung
+	// Stamp coupling : Truyen doi tuong Stage stage nhung khong su dung
 	public InvoiceScreenHandler(Stage stage, String screenPath, Invoice invoice) throws IOException {
 		super(stage, screenPath);
 		try {

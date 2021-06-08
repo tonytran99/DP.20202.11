@@ -24,9 +24,9 @@ public class Order {
         this.subtotal = 0;
         this.tax = 0;
     }
-    
+
     // stamp coupling do truyen cart o dang phuc hop khong can thiet
-    
+
     public Order(Cart cart) {
         List<OrderItem> orderItems = new ArrayList<>();
         for (Object object : SessionInformation.cart.getListMedia()) {
@@ -53,7 +53,7 @@ public class Order {
     public DeliveryInfo getDeliveryInfo() {
         return deliveryInfo;
     }
-    
+
     // Data coupling do truyen va su dung het du lieu
     public void setDeliveryInfo(DeliveryInfo deliveryInfo) {
         deliveryInfo.setShippingFeeCalculator(new OldCalculator());

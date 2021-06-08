@@ -8,6 +8,8 @@ import common.exception.InvalidCardException;
 import common.exception.PaymentException;
 import common.exception.UnrecognizedException;
 import entity.payment.CreditCard;
+import entity.payment.CardStrategy;
+import entity.payment.PaymentTransaction;
 import subsystem.InterbankInterface;
 import subsystem.InterbankSubsystem;
 
@@ -27,12 +29,16 @@ public class PaymentController extends BaseController {
 	/**
 	 * Represent the card used for payment
 	 */
-	private CreditCard creditCard;
+	private CardStrategy cardStrategy;
 
 	/**
 	 * Represent the Interbank subsystem
 	 */
 	private InterbankInterface interbankInterface;
+
+	public void setCardStrategy(CardStrategy cardStrategy){
+		this.cardStrategy = cardStrategy;
+	}
 
 	/**
 	 * Validate the input date which should be in the format "mm/yy", and then
@@ -89,17 +95,8 @@ public class PaymentController extends BaseController {
 		Map<String, String> result = new Hashtable<String, String>();
 		result.put("RESULT", "PAYMENT FAILED!");
 		try {
-			this.creditCard  = new CreditCard(
-					cardNumber,
-					cardHolderName,
-					getExpirationDate(expirationDate),
-					Integer.parseInt(securityCode));
-
-
 			this.interbankInterface = new InterbankSubsystem();
-			interbankInterface.payOrder(creditCard, amount, contents);
-
-
+			PaymentTransaction transaction = interbankInterface.payOrder(cardStrategy, amount, contents);
 			result.put("RESULT", "PAYMENT SUCCESSFUL!");
 			result.put("MESSAGE", "You have successfully paid the order!");
 		} catch (PaymentException | UnrecognizedException ex) {

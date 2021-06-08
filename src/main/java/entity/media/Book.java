@@ -101,15 +101,7 @@ public class Book extends Media {
 
     @Override
     public String toString() {
-        String basicInformation = "{" +
-                " id='" + id + "'" +
-                ", title='" + title + "'" +
-                ", category='" + category + "'" +
-                ", price='" + price + "'" +
-                ", quantity='" + quantity + "'" +
-                ", type='" + type + "'" +
-                ", imageURL='" + imageURL + "'" +
-                "}";
+        String basicInformation = getBasicInformation();
         return "{" +
             basicInformation +
             " author='" + author + "'" +

@@ -52,9 +52,9 @@ public class CartScreenHandler extends BaseScreenHandler {
 
 	@FXML
 	private Button btnPlaceOrder;
-        //content coupling do doi du lieu cua LOGGER
-        // common coupling do day la phuong thuc public nen co the thay the bat cu luc nao
-        // data coupling do truyen va su dung het du lieu
+	//content coupling do doi du lieu cua LOGGER
+	// common coupling do day la phuong thuc public nen co the thay the bat cu luc nao
+	// data coupling do truyen va su dung het du lieu
 	public CartScreenHandler(Stage stage, String screenPath) throws IOException {
 		super(stage, screenPath);
 		try {
@@ -68,9 +68,9 @@ public class CartScreenHandler extends BaseScreenHandler {
 		}
 	}
 
-		// Temporal cohesion: setOnMouseClicked  va setOnMouseClicked doc lap
-        // content coupling do doi du lieu cua aimsImage
-        // common coupling do day la phuong thuc public nen co the thay the bat cu luc nao
+	// Temporal cohesion: setOnMouseClicked  va setOnMouseClicked doc lap
+	// content coupling do doi du lieu cua aimsImage
+	// common coupling do day la phuong thuc public nen co the thay the bat cu luc nao
 	protected void setupFunctionality() throws Exception {
 		// fix relative image path caused by fxml
 		File file = new File(ViewsConfig.IMAGE_PATH + "/Logo.png");
@@ -95,11 +95,11 @@ public class CartScreenHandler extends BaseScreenHandler {
 
 		});
 	}
-        
+
 	public ViewCartController getBController(){
 		return (ViewCartController) super.getBController();
 	}
-        // common coupling do day la phuong thuc public nen co the thay the bat cu luc nao
+	// common coupling do day la phuong thuc public nen co the thay the bat cu luc nao
 	public void requestToViewCart(BaseScreenHandler prevScreen) throws SQLException {
 		setPreviousScreen(prevScreen);
 		setScreenTitle("Cart Screen");
@@ -107,7 +107,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 		displayCartWithMediaAvailability();
 		show();
 	}
-     // common coupling do day la phuong thuc public nen co the thay the bat cu luc nao
+	// common coupling do day la phuong thuc public nen co the thay the bat cu luc nao
 	public void requestToPlaceOrder() throws SQLException, IOException {
 		try {
 			// create placeOrderController and process the order
@@ -118,7 +118,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 			}
 
 			placeOrderController.placeOrder();
-			
+
 			// display available media
 			displayCartWithMediaAvailability();
 
@@ -144,7 +144,7 @@ public class CartScreenHandler extends BaseScreenHandler {
 		getBController().checkAvailabilityOfProduct();
 		displayCartWithMediaAvailability();
 	}
-         
+
 	void updateCartAmount(){
 		// calculate subtotal and amount
 		int subtotal = getBController().getCartSubtotal();

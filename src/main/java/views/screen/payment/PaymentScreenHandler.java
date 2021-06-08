@@ -12,6 +12,7 @@ import utils.Utils;
 import views.screen.BaseScreenHandler;
 import views.screen.ViewsConfig;
 import views.screen.popup.PopupScreen;
+import entity.payment.CreditCard;
 
 import java.io.IOException;
 import java.util.Map;
@@ -76,8 +77,11 @@ public class PaymentScreenHandler extends BaseScreenHandler {
 	void confirmToPayOrder() throws IOException{
 		String contents = "pay order";
 		PaymentController ctrl = (PaymentController) getBController();
+		ctrl.setCardStrategy(new CreditCard(cardNumber.getText(), holderName.getText(),
+				expirationDate.getText(), Integer.parseInt(securityCode.getText())));
 		Map<String, String> response = ctrl.payOrder(invoice.getAmount(), contents, cardNumber.getText(), holderName.getText(),
 				expirationDate.getText(), securityCode.getText());
+
 
 		BaseScreenHandler resultScreen = new ResultScreenHandler(this.stage, ViewsConfig.RESULT_SCREEN_PATH, response);
 		resultScreen.setPreviousScreen(this);

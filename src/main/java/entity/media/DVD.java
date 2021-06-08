@@ -94,15 +94,7 @@ public class DVD extends Media {
 
     @Override
     public String toString() {
-        String basicInformation = "{" +
-                " id='" + id + "'" +
-                ", title='" + title + "'" +
-                ", category='" + category + "'" +
-                ", price='" + price + "'" +
-                ", quantity='" + quantity + "'" +
-                ", type='" + type + "'" +
-                ", imageURL='" + imageURL + "'" +
-                "}";
+        String basicInformation = getBasicInformation();
         return "{" + basicInformation + " discType='" + discType + "'" + ", director='" + director + "'" + ", runtime='"
                 + runtime + "'" + ", studio='" + studio + "'" + ", subtitles='" + subtitles + "'" + ", releasedDate='"
                 + releasedDate + "'" + ", filmType='" + filmType + "'" + "}";

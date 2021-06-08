@@ -111,4 +111,17 @@ public class Media {
         this.type = type;
         return this;
     }
+
+    public String getBasicInformation(){
+        String basicInformation = "{" +
+                " id='" + id + "'" +
+                ", title='" + title + "'" +
+                ", category='" + category + "'" +
+                ", price='" + price + "'" +
+                ", quantity='" + quantity + "'" +
+                ", type='" + type + "'" +
+                ", imageURL='" + imageURL + "'" +
+                "}";
+        return basicInformation;
+    }
 }

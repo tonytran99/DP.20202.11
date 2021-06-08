@@ -21,7 +21,7 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 	protected HomeScreenHandler homeScreenHandler;
 	protected Hashtable<String, String> messages;
 	private BaseController bController;
-       // 
+	//
 	protected BaseScreenHandler(Stage stage, String screenPath) throws IOException {
 		super(screenPath);
 		this.stage = stage;
@@ -61,5 +61,5 @@ public abstract class BaseScreenHandler extends FXMLScreenHandler {
 
 	public void setHomeScreenHandler(HomeScreenHandler HomeScreenHandler) {
 		this.homeScreenHandler = HomeScreenHandler;
-	}	
+	}
 }

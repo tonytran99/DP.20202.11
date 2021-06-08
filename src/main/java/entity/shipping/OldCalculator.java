@@ -9,6 +9,6 @@ public class OldCalculator implements ShippingFeeCalculator {
 	public int calculate(DeliveryInfo deliveryInfo, Order order) {
 		DistanceCalculator distanceCalculator = new DistanceCalculator();
 		int distance = distanceCalculator.calculateDistance(deliveryInfo.address, deliveryInfo.province);
-        return (int) (distance * 1.2);
+		return (int) (distance * 1.2);
 	}
 }

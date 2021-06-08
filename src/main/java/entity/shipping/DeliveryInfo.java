@@ -3,7 +3,7 @@ package entity.shipping;
 import entity.order.Order;
 import org.example.DistanceCalculator;
 public class DeliveryInfo {
-	// Content and common coupling do co the truy cap boi cac lop con ben ngoai va thay doi gia tri qua ham get set 
+    // Content and common coupling do co the truy cap boi cac lop con ben ngoai va thay doi gia tri qua ham get set
     protected String name;
     protected String phone;
     protected String province;
@@ -24,12 +24,12 @@ public class DeliveryInfo {
     }
 
     public void setShippingFeeCalculator(ShippingFeeCalculator shippingFeeCalculator) {
-    	this.shippingFeeCalculator = shippingFeeCalculator;
+        this.shippingFeeCalculator = shippingFeeCalculator;
     }
     public String getName() {
         return name;
     }
-    
+
     public String getPhone() {
         return phone;
     }
