@@ -4,7 +4,7 @@ package entity.shipping;
  * @author
  */
 public class ShippingConfigs {
-	// commom vÃ  content coupling do de du lieu public
+	// commom va content coupling do de du lieu public
     public static String[] PROVINCES = {
             "Bắc Giang", "Bắc Kạn", "Cao Bằng",	"Hà Giang",	"Lạng Sơn",	"Phú Thọ", "Quảng Ninh", "Thái Nguyên", "Tuyên Quang", 	"Yên Bái",
             "Điện Biên", "Hòa Bình", "Lai Châu", "Sơn La",	"Bắc Ninh",	"Hà Nam", "Hải Dương", 	"Hưng Yên", "Nam Định", "Ninh Bình", "Thái Bình",

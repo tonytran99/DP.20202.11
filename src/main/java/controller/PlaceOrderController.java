@@ -2,6 +2,7 @@ package controller;
 
 import common.exception.InvalidDeliveryInfoException;
 import entity.invoice.Invoice;
+import entity.invoice.WaitingInvoice;
 import entity.order.Order;
 import entity.shipping.DeliveryInfo;
 import org.example.DistanceCalculator;
@@ -17,11 +18,10 @@ import java.util.regex.Pattern;
 
  * @author nguyenlm
  */
+
 //SOLID: Vi pham nguyen ly SRP do class chua nhieu ham validate
 //SOLID: Vi pham nguyen ly OCP do phuong thuc validateDeliveryInfo thay doi khi info nguoi dung thay doi
 //SOLID: vi pham nguyen ly OCP OCP do phuong thuc processDeliveryInfo
-// Logical cohension do co nhieu ham tuong tu nhau 
-
 // logical cohesion, cac phuong thuc validate nhu validateDeliveryInfo , validatePhoneNumber, validateName, validateAddress can duoc tach rieng vao mot lop
 public class PlaceOrderController extends BaseController {
 
@@ -56,7 +56,7 @@ public class PlaceOrderController extends BaseController {
      */
     // Data coupling do truyen va su dung het du lieu
     public Invoice createInvoice(Order order) {
-        return new Invoice(order);
+        return new Invoice(order, new WaitingInvoice());
     }
 
     /**
@@ -66,7 +66,7 @@ public class PlaceOrderController extends BaseController {
      * @throws IOException
      */
     //Data coupling do truyen va su dung het du lieu
-    public DeliveryInfo processDeliveryInfo(HashMap<String, String> info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
+    public DeliveryInfo processDeliveryInfo(HashMap info) throws InterruptedException, IOException, InvalidDeliveryInfoException {
         LOGGER.info("Process Delivery Info");
         LOGGER.info(info.toString());
         validateDeliveryInfo(info);
