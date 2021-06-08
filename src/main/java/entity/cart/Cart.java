@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import common.exception.MediaNotAvailableException;
-import entity.media.Media;
 
 //Communicational Cohesion vi cac phuong thuc cung thuc hien tren lstCartItem
 public class Cart {

@@ -97,8 +97,6 @@ public class PaymentController extends BaseController {
 		try {
 			this.interbankInterface = new InterbankSubsystem();
 			PaymentTransaction transaction = interbankInterface.payOrder(cardStrategy, amount, contents);
-
-
 			result.put("RESULT", "PAYMENT SUCCESSFUL!");
 			result.put("MESSAGE", "You have successfully paid the order!");
 		} catch (PaymentException | UnrecognizedException ex) {

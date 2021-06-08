@@ -1,5 +1,5 @@
 package entity.payment;
-//SOLID: vi phạm nguyên lý OCP vì khi có thêm phương thức thanh toán mới sẽ phải sửa lại mã nguồn của class
+//SOLID: vi pham nguyen ly OCP vi khi can them phuong thuc thanh toan moi phai sua truc tiep ma nguon trong class
 public class PaymentTransaction {
 	private String errorCode;
 	private CardStrategy cardStrategy;
@@ -8,8 +8,7 @@ public class PaymentTransaction {
 	private int amount;
 	private String createdAt;
     // data coupling do truyền và sử dụng hết dữ liệu	
-	public PaymentTransaction(String errorCode, CardStrategy cardStrategy, String transactionId, String transactionContent,
-                              int amount, String createdAt) {
+	public PaymentTransaction(String errorCode, CardStrategy cardStrategy, String transactionId, String transactionContent, int amount, String createdAt) {
 		super();
 		this.errorCode = errorCode;
 		this.cardStrategy = cardStrategy;
