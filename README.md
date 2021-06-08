@@ -1,20 +1,24 @@
-# Th�ng tin c�c th�nh vi�n
-Ph?m ?�nh Th?ng � 20173370
-Nguy?n Quang T?o � 20173356
-Tr?n ?�nh Th?ng � 20173363
-Tr?nh V?n Th?ng - 20183630
+# Thông tin các thành viên
+- Phạm Đình Thắng – 20173370
+- Nguyễn Quang Tạo – 20173356
+- Trần Đình Thắng – 20173363
+- Trịnh Văn Thắng - 20183630
  
 
-# ?�ng g�p c?a c�c th�nh vi�n
-Ph?m ?�nh Th?ng: T�m c�c l?i li�n quan ??n Clear Name, Clean Class.
-C?i ti?n thi?t k? ?�p ?ng c�c y�u c?u s? 4,6,7
+# Đóng góp của các thành viên
+Phạm Đình Thắng: 
+- Tìm các lỗi liên quan đến Clear Name, Clean Class.
+- Cải tiến thiết kế đáp ứng các yêu cầu số 4,6,7
 
-Nguy?n Quang T?o: T�m c�c l?i li�n quan ??n Clean Fucntion, SOLID
-C?i ti?n y�u c?u s? 5, c?i ti?n vi ph?m SRP
+Nguyễn Quang Tạo: 
+- Tìm các lỗi liên quan đến Clean Function, SOLID
+- Cải tiến thiết kế đáp ứng các yêu cầu số 5, cải tiến vi phạm SRP
 
-Tr?n ?�nh Th?ng: T�m module t??ng ?ng v?i c�c c?p ?? Cohesion
+Trần Đình Thắng: 
+- Tìm module tương ứng với các cấp độ Cohesion
 
-Tr?nh V?n Th?ng: T�m module t??ng ?ng v?i c�c c?p ?? Coupling
+Trịnh Văn Thắng: 
+- Tìm module tương ứng với các cấp độ Coupling
 
-# Link of presentation video
-
+# Link video thuyết trình
+https://drive.google.com/file/d/1ZP4hfxgWSxar9yZlDvq7i7WbCz1woRLG/view?usp=sharing
