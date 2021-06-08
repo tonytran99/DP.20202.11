@@ -8,10 +8,14 @@ package common.exception;;
  */
 public class AimsException extends RuntimeException {
 
-    public AimsException() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public AimsException() {
 
 	}
-    // data coupling do truyền sử dụng hết dữ liệu
+    // Data coupling do truyen su dung het du lieu
 	public AimsException(String message) {
 		super(message);
 	}

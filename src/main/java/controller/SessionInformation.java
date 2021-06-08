@@ -9,9 +9,9 @@ import java.time.LocalDateTime;
  * @author
  */
 public class SessionInformation {
-	// content coupling do để dữ liệu ở dạng public dẫn đến có thể truy cập từ bất cứ đâu là thay đổi
+	// content coupling do de du lieu o dang public dan den co the thay doi tu bat cu dau
     public static User mainUser;
-    public static Cart cart = Cart.getInstance();
+    public static Cart cart = Cart.getInstance();     // using SINGLETON
     public static LocalDateTime expiredTime;
 
 }

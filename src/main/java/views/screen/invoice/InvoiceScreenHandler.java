@@ -22,6 +22,7 @@ import java.sql.SQLException;
 import java.util.logging.Logger;
 
 public class InvoiceScreenHandler extends BaseScreenHandler {
+	// singleton design pattern
 
 	private static Logger LOGGER = Utils.getLogger(InvoiceScreenHandler.class.getName());
 
@@ -57,7 +58,7 @@ public class InvoiceScreenHandler extends BaseScreenHandler {
 
 	private Invoice invoice;
 
-    // Stamp coupling : Truyen doi tuong Stage stage nhung khong su dung
+	// Stamp coupling : Truyen doi tuong Stage stage nhung khong su dung
 	public InvoiceScreenHandler(Stage stage, String screenPath, Invoice invoice) throws IOException {
 		super(stage, screenPath);
 		try {
